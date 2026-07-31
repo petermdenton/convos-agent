@@ -1,0 +1,50 @@
+# Whitelist strategy: ignore EVERYTHING, then re-admit only the Convos
+# customization layer. Anything not explicitly whitelisted never reaches git —
+# which is what keeps tokens, OAuth secrets, personal data, and the upstream
+# Hermes app out of the repo.
+
+/*
+
+# ── The Convos layer ─────────────────────────────────────────────
+!/.gitignore
+!/README.md
+!/SOUL.md
+!/config.example.yaml
+
+!/scripts/
+!/hooks/
+# skills: only the travel pack (the rest ship with Hermes)
+!/skills/
+/skills/*
+!/skills/travel/
+
+# ── Never these, even inside whitelisted dirs ────────────────────
+__pycache__/
+*.pyc
+.DS_Store
+
+# one-off backfill/fix scripts carry real names & phone numbers
+scripts/backfill_*.py
+scripts/set_laura.py
+scripts/link_train_trip14.py
+
+# skills may cache creds/artifacts locally
+skills/**/node_modules/
+skills/**/package-lock.json
+skills/**/.env
+skills/**/*token*
+skills/**/*secret*
+skills/**/cookies*
+skills/**/__pycache__/
+skills/.*
+skills/travel/**/data/*.db
+
+# ── Explicitly called out (already covered by /*, but make it loud) ──
+# .env                  — PHOTON_* secrets
+# auth.json             — Hermes auth
+# google_token.json     — Google OAuth token
+# google_client_secret.json
+# data/                 — trips.db: real trips, phones, names
+# sessions/ state.db*   — chat transcripts
+# logs/ cron/ memories/ — runtime
+# hermes-agent/         — upstream app, not ours to publish

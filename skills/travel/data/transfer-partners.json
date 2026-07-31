@@ -1,0 +1,168 @@
+{
+  "_meta": {
+    "last_updated": "2026-07-12",
+    "description": "Credit card transfer partners and ratios. Ratio is points_out per 1 point_in. A ratio of 1.0 means 1:1. A ratio of 0.8 means 1000 points becomes 800 miles.",
+    "sources": [
+      "https://www.bfrb.com/credit-card-rewards/bilt-mastercard-rewards",
+      "https://www.americanexpress.com/en-us/rewards/membership-rewards/transfer",
+      "https://www.chase.com/personal/credit-cards/ultimate-rewards",
+      "https://www.capitalone.com/credit-cards/benefits/travel-transfer-partners/"
+    ],
+    "staleness_days": 90
+  },
+  "bilt": {
+    "display_name": "Bilt Rewards",
+    "airlines": {
+      "alaska_hawaiian": { "program": "Atmos Rewards (Alaska + Hawaiian)", "ratio": 1.0 },
+      "avianca": { "program": "Avianca LifeMiles", "ratio": 1.0 },
+      "united": { "program": "United MileagePlus", "ratio": 1.0 },
+      "flying_blue": { "program": "Air France/KLM Flying Blue", "ratio": 1.0 },
+      "virgin_red": { "program": "Virgin Red", "ratio": 1.0 },
+      "virgin_atlantic": { "program": "Virgin Atlantic Flying Club", "ratio": 1.0 },
+      "emirates": { "program": "Emirates Skywards", "ratio": 1.0 },
+      "british_airways": { "program": "British Airways Executive Club", "ratio": 1.0 },
+      "cathay": { "program": "Cathay Pacific", "ratio": 1.0 },
+      "turkish": { "program": "Turkish Airlines Miles&Smiles", "ratio": 1.0 },
+      "aer_lingus": { "program": "Aer Lingus AerClub", "ratio": 1.0 },
+      "iberia": { "program": "Iberia Plus", "ratio": 1.0 },
+      "aeroplan": { "program": "Air Canada Aeroplan", "ratio": 1.0 },
+      "tap": { "program": "TAP Miles&Go", "ratio": 1.0 },
+      "southwest": { "program": "Southwest Rapid Rewards", "ratio": 1.0 },
+      "jal": { "program": "Japan Airlines Mileage Bank", "ratio": 1.0 },
+      "qatar": { "program": "Qatar Airways Privilege Club", "ratio": 1.0 },
+      "etihad": { "program": "Etihad Guest", "ratio": 1.0 },
+      "spirit": { "program": "Spirit Free Spirit", "ratio": 1.0 }
+    },
+    "hotels": {
+      "hilton": { "program": "Hilton Honors", "ratio": 1.0 },
+      "marriott": { "program": "Marriott Bonvoy", "ratio": 1.0 },
+      "hyatt": { "program": "World of Hyatt", "ratio": 1.0 },
+      "ihg": { "program": "IHG One Rewards", "ratio": 1.0 },
+      "wyndham": { "program": "Wyndham Rewards", "ratio": 1.0 },
+      "accor": { "program": "Accor Live Limitless", "ratio": 0.667, "note": "3:2 ratio (1500 Bilt = 1000 Accor)" }
+    }
+  },
+  "amex_mr": {
+    "display_name": "Amex Membership Rewards",
+    "airlines": {
+      "aer_lingus": { "program": "Aer Lingus AerClub", "ratio": 1.0 },
+      "aeromexico": { "program": "Aeromexico Rewards", "ratio": 1.6 },
+      "aeroplan": { "program": "Air Canada Aeroplan", "ratio": 1.0 },
+      "flying_blue": { "program": "Air France/KLM Flying Blue", "ratio": 1.0 },
+      "ana": { "program": "ANA Mileage Club", "ratio": 1.0 },
+      "avianca": { "program": "Avianca LifeMiles", "ratio": 1.0 },
+      "cathay": { "program": "Cathay Pacific", "ratio": 0.8, "note": "1000 MR = 800 Asia Miles" },
+      "delta": { "program": "Delta SkyMiles", "ratio": 1.0 },
+      "emirates": { "program": "Emirates Skywards", "ratio": 0.8, "note": "1000 MR = 800 Skywards Miles" },
+      "iberia": { "program": "Iberia Plus", "ratio": 1.0 },
+      "jetblue": { "program": "JetBlue TrueBlue", "ratio": 0.8, "note": "250 MR = 200 TrueBlue" },
+      "qantas": { "program": "Qantas Frequent Flyer", "ratio": 1.0 },
+      "qatar": { "program": "Qatar Airways Privilege Club", "ratio": 1.0 },
+      "singapore": { "program": "Singapore KrisFlyer", "ratio": 1.0 },
+      "british_airways": { "program": "British Airways Executive Club", "ratio": 1.0 },
+      "virgin_atlantic": { "program": "Virgin Atlantic Flying Club", "ratio": 1.0 }
+    },
+    "hotels": {
+      "choice": { "program": "Choice Privileges", "ratio": 1.0 },
+      "hilton": { "program": "Hilton Honors", "ratio": 2.0, "note": "1000 MR = 2000 Hilton" },
+      "marriott": { "program": "Marriott Bonvoy", "ratio": 1.0 }
+    }
+  },
+  "chase_ur": {
+    "display_name": "Chase Ultimate Rewards",
+    "airlines": {
+      "aer_lingus": { "program": "Aer Lingus AerClub", "ratio": 1.0 },
+      "aeroplan": { "program": "Air Canada Aeroplan", "ratio": 1.0 },
+      "flying_blue": { "program": "Air France/KLM Flying Blue", "ratio": 1.0 },
+      "british_airways": { "program": "British Airways Executive Club", "ratio": 1.0 },
+      "iberia": { "program": "Iberia Plus", "ratio": 1.0 },
+      "jetblue": { "program": "JetBlue TrueBlue", "ratio": 1.0 },
+      "singapore": { "program": "Singapore KrisFlyer", "ratio": 1.0 },
+      "southwest": { "program": "Southwest Rapid Rewards", "ratio": 1.0 },
+      "united": { "program": "United MileagePlus", "ratio": 1.0 },
+      "virgin_atlantic": { "program": "Virgin Atlantic Flying Club", "ratio": 1.0 }
+    },
+    "hotels": {
+      "ihg": { "program": "IHG One Rewards", "ratio": 1.0 },
+      "marriott": { "program": "Marriott Bonvoy", "ratio": 1.0 },
+      "hyatt": { "program": "World of Hyatt", "ratio": 1.0 }
+    }
+  },
+  "capital_one": {
+    "display_name": "Capital One Miles",
+    "airlines": {
+      "aeromexico": { "program": "Aeromexico Rewards", "ratio": 1.0, "transfer_time": "instant" },
+      "aeroplan": { "program": "Air Canada Aeroplan", "ratio": 1.0, "transfer_time": "instant" },
+      "flying_blue": { "program": "Air France/KLM Flying Blue", "ratio": 1.0, "transfer_time": "instant" },
+      "avianca": { "program": "Avianca LifeMiles", "ratio": 1.0, "transfer_time": "instant" },
+      "british_airways": { "program": "British Airways Executive Club", "ratio": 1.0, "transfer_time": "instant" },
+      "cathay": { "program": "Cathay Pacific", "ratio": 1.0, "transfer_time": "24 hours" },
+      "emirates": { "program": "Emirates Skywards", "ratio": 0.75, "note": "4:3 ratio (4000 Cap One = 3000 Skywards)", "transfer_time": "instant" },
+      "etihad": { "program": "Etihad Guest", "ratio": 1.0, "transfer_time": "instant" },
+      "eva_air": { "program": "EVA Air Infinity MileageLands", "ratio": 0.75, "note": "4:3 ratio", "transfer_time": "36 hours" },
+      "finnair": { "program": "Finnair Plus", "ratio": 1.0, "transfer_time": "instant" },
+      "jal": { "program": "Japan Airlines Mileage Bank", "ratio": 0.75, "note": "4:3 ratio", "transfer_time": "instant" },
+      "jetblue": { "program": "JetBlue TrueBlue", "ratio": 0.6, "note": "5:3 ratio", "transfer_time": "instant" },
+      "qantas": { "program": "Qantas Frequent Flyer", "ratio": 1.0, "transfer_time": "instant" },
+      "qatar": { "program": "Qatar Airways Privilege Club", "ratio": 1.0, "transfer_time": "instant" },
+      "singapore": { "program": "Singapore KrisFlyer", "ratio": 1.0, "transfer_time": "instant" },
+      "tap": { "program": "TAP Miles&Go", "ratio": 1.0, "transfer_time": "instant" },
+      "turkish": { "program": "Turkish Airlines Miles&Smiles", "ratio": 1.0, "transfer_time": "instant" },
+      "virgin_red": { "program": "Virgin Red", "ratio": 1.0, "transfer_time": "instant" }
+    },
+    "hotels": {
+      "accor": { "program": "Accor Live Limitless", "ratio": 0.5, "note": "2:1 ratio", "transfer_time": "two business days" },
+      "choice": { "program": "Choice Privileges", "ratio": 1.0, "transfer_time": "24 hours" },
+      "i_prefer": { "program": "I Prefer Hotel Rewards", "ratio": 2.0, "note": "1:2 ratio (1000 miles = 2000 I Prefer)", "transfer_time": "instant" },
+      "wyndham": { "program": "Wyndham Rewards", "ratio": 1.0, "transfer_time": "instant" }
+    }
+  },
+  "citi_ty": {
+    "display_name": "Citi ThankYou Points",
+    "_note": "Some partners have worse ratios for 'limited ThankYou points' cards (e.g., Citi Double Cash). The ratios below are for premium cards (Citi Strata Premier, etc.).",
+    "airlines": {
+      "american": { "program": "American Airlines AAdvantage", "ratio": 1.0, "note": "1:1 for Citi Strata Elite, Strata Premier, Prestige (annual-fee premium cards). 1:0.7 for Citi Strata, Double Cash, Custom Cash, ThankYou Preferred (no/low-annual-fee cards). Citi added AA as a transfer partner in 2024." },
+      "aeromexico": { "program": "Aeromexico Rewards", "ratio": 1.0 },
+      "flying_blue": { "program": "Air France/KLM Flying Blue", "ratio": 1.0 },
+      "avianca": { "program": "Avianca LifeMiles", "ratio": 1.0 },
+      "british_airways": { "program": "British Airways Executive Club", "ratio": 1.0 },
+      "cathay": { "program": "Cathay Pacific Asia Miles", "ratio": 1.0 },
+      "emirates": { "program": "Emirates Skywards", "ratio": 0.8, "note": "5:4 ratio (1000 TY = 800 Skywards)" },
+      "etihad": { "program": "Etihad Guest", "ratio": 1.0 },
+      "eva_air": { "program": "EVA Air Infinity MileageLands", "ratio": 1.0 },
+      "jetblue": { "program": "JetBlue TrueBlue", "ratio": 1.0, "note": "5:4 ratio for limited ThankYou cards" },
+      "qantas": { "program": "Qantas Frequent Flyer", "ratio": 1.0 },
+      "qatar": { "program": "Qatar Airways Privilege Club", "ratio": 1.0 },
+      "singapore": { "program": "Singapore KrisFlyer", "ratio": 1.0 },
+      "thai": { "program": "Thai Royal Orchid Plus", "ratio": 1.0 },
+      "turkish": { "program": "Turkish Airlines Miles&Smiles", "ratio": 1.0 },
+      "virgin_atlantic": { "program": "Virgin Atlantic Flying Club", "ratio": 1.0 },
+      "virgin_red": { "program": "Virgin Red", "ratio": 1.0 },
+      "jal": { "program": "Japan Airlines Mileage Bank", "ratio": 0.75, "note": "4:3 ratio (4000 TY = 3000 JAL miles)" }
+    },
+    "hotels": {
+      "accor": { "program": "Accor Live Limitless", "ratio": 0.5, "note": "2:1 ratio" },
+      "choice": { "program": "Choice Privileges", "ratio": 2.0, "note": "1:2 ratio (1000 TY = 2000 Choice). 2:3 for limited TY cards" },
+      "i_prefer": { "program": "I Prefer Hotel Rewards", "ratio": 4.0, "note": "1:4 ratio (1000 TY = 4000 I Prefer)" },
+      "leading_hotels": { "program": "Leading Hotels of the World Leaders Club", "ratio": 0.2, "note": "5:1 ratio (5000 TY = 1000 Leaders Club)" },
+      "wyndham": { "program": "Wyndham Rewards", "ratio": 1.0, "note": "5:4 for limited ThankYou cards" }
+    }
+  },
+  "wells_fargo": {
+    "display_name": "Wells Fargo Rewards",
+    "airlines": {
+      "aer_lingus": { "program": "Aer Lingus AerClub", "ratio": 1.0 },
+      "flying_blue": { "program": "Air France/KLM Flying Blue", "ratio": 1.0 },
+      "avianca": { "program": "Avianca LifeMiles", "ratio": 1.0 },
+      "british_airways": { "program": "British Airways Executive Club", "ratio": 1.0 },
+      "cathay": { "program": "Cathay Pacific Asia Miles", "ratio": 1.0 },
+      "iberia": { "program": "Iberia Plus", "ratio": 1.0 },
+      "jetblue": { "program": "JetBlue TrueBlue", "ratio": 1.0 },
+      "virgin_atlantic": { "program": "Virgin Atlantic Flying Club", "ratio": 1.0, "note": "Via Virgin Red: Wells Fargo transfers to Virgin Red, whose Virgin Points are usable as Virgin Atlantic Flying Club miles at 1:1." },
+      "virgin_red": { "program": "Virgin Red", "ratio": 1.0 }
+    },
+    "hotels": {
+      "choice": { "program": "Choice Privileges", "ratio": 2.0, "note": "1:2 ratio (1000 WF = 2000 Choice)" }
+    }
+  }
+}

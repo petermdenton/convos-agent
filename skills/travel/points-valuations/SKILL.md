@@ -1,0 +1,111 @@
+---
+name: points-valuations
+description: Cents-per-point (cpp) valuations across major loyalty programs from four publications. Floor/ceiling rules for deciding if a redemption is good or exceptional.
+category: reference
+summary: CPP formula, floor/ceiling rules, surcharge-heavy programs to avoid, transfer bonus considerations, Chase Points Boost dynamics, opportunity cost.
+---
+
+# Points Valuations
+
+**Reference data:** `~/.hermes/skills/travel/data/points-valuations.json`
+
+Four sources are aggregated:
+- **The Points Guy (TPG):** optimistic, has affiliate incentive to inflate
+- **Upgraded Points:** moderate
+- **One Mile at a Time (OMAAT):** conservative
+- **View From The Wing (VFTW):** most conservative and theoretically rigorous
+
+Each entry has:
+- `floor` — conservative minimum (use this for decision-making)
+- `ceiling` — optimistic maximum
+- `sources` — individual values from each publication
+
+## Decision Rules
+
+- **Default to the floor for "should I burn points on this?" decisions.** If a redemption beats the ceiling, it's genuinely exceptional. Say so.
+- **Below the floor is objectively poor value.** Flag it and suggest alternatives.
+- **TPG systematically overvalues** (affiliate incentive). VFTW and OMAAT are more useful for real decisions.
+- **When floor and ceiling are within 0.1cpp,** the value is well-established.
+- **When floor and ceiling are 0.3cpp+ apart,** mention the range and let the user decide.
+
+## The Points-vs-Cash Decision Sequence
+
+Run these steps in order for any "should I use points?" question. Each step can end the analysis early; don't skip ahead.
+
+1. **Compute true cpp** with the formula below — total out-of-pocket including award taxes/surcharges, not gross fare. If you don't know the surcharge yet, get it before quoting a cpp; a BA award can swing from 2.5cpp to 0.9cpp on surcharges alone.
+2. **Compare against the program's `floor`.** Below floor → recommend cash (or a different program), and say why. At/above `ceiling` → call it exceptional explicitly.
+3. **Check reachability before valuing further.** A great cpp in a program the user can't reach (no balance, no transfer path in `~/.hermes/skills/travel/data/transfer-partners.json`) is not an option — drop it.
+4. **If a transfer is involved, gate through `transfer-bonuses`** (check expiry against today's date) — an active bonus divides the effective miles cost and can flip step 2's verdict.
+5. **Check the opportunity cost of the currency, not just this redemption.** UR at 1.3cpp on a flight is a loss if the user's realistic alternative is Hyatt at 1.5-2.0cpp — the benchmark for a transferable currency is its best *practical* use, not 1.0.
+6. **Compare against the portal quote** (actual quote, not assumed rate — Points Boost is dynamic). Transfer wins on miles-count more often than portal wins on simplicity; show both numbers.
+7. **Present cpp math on both sides** and a one-line verdict. User preference thresholds (e.g. a personal ~1.5cpp bar) are an overlay the user applies — still surface sub-threshold options when cash is unreasonable or points are expiring, flagged as such.
+
+## Staleness Check
+
+Look at `_meta.last_updated` in the data file. If it's more than 45 days old, re-fetch from the source URLs in `_meta.sources` and update the file. Programs devalue regularly, and stale valuations lead to bad recommendations.
+
+## How to Compute CPP Correctly
+
+```
+CPP = (cash_price - taxes_and_fees_you_still_pay) * 100 / miles_required
+```
+
+This is the TOTAL out-of-pocket cost calculation, not just gross fare. Many award tickets still charge taxes, fuel surcharges, and carrier-imposed fees. These can be $5 on United or $800+ on British Airways. The cpp must reflect what you actually save.
+
+## Surcharge-Heavy Programs (Watch Out)
+
+Some programs pass through massive fuel surcharges on award tickets. The worst offenders:
+- British Airways (especially on BA metal)
+- Lufthansa
+- SWISS
+- Austrian
+- Other European flag carriers
+
+## Surcharge-Light Programs (Use These)
+
+- United (on United metal)
+- ANA
+- Singapore (on own metal)
+- Air Canada Aeroplan (on most partners)
+
+A 50K mile award with $600 in surcharges is NOT the same value as 50K with $5.60 in taxes. Always flag the expected surcharge level when recommending an award.
+
+## Transfer Bonuses Change Everything
+
+Programs frequently run 20-50% transfer bonuses (e.g., "transfer Amex MR to Virgin Atlantic and get 30% bonus miles"). These are time-limited and change the optimal play entirely.
+
+**Use the `transfer-bonuses` skill** to check current active bonuses (live data, weekly auto-refresh from Frequent Miler with AwardWallet cross-check). A 30% bonus on a transfer can turn a mediocre redemption into an exceptional one. The skill returns effective ratios you can plug directly into the CPP formula.
+
+## Portal Rates Are Dynamic
+
+Chase Points Boost (launched June 2025) replaced fixed redemption rates with dynamic offers of 1.5 to 2.0cpp (Reserve) or 1.5 to 1.75cpp (Preferred). Not every booking qualifies. The only way to know the real portal rate is to check the portal.
+
+For rough estimates:
+- Chase: dynamic Points Boost pricing (~1.5-2.0cpp on select bookings; verify the actual quote, do not assume a guaranteed floor)
+- Amex/Capital One: 1.0cpp default
+
+Always mention that the user should verify the portal price.
+
+## Transfer Partners Often Beat the Portal
+
+This is the whole game. If 60K miles via transfer gets you a flight that would cost 90K via the portal, that's the play. Make this comparison explicit.
+
+## Opportunity Cost
+
+Burning Chase UR on a 1.2cpp portal redemption is wasteful when you could transfer to Hyatt at 2.0cpp for hotels. Mention when points have better uses elsewhere.
+
+## Status Affects the Real Cost of a Flight
+
+Elite status changes the effective cost of any cash flight by adding ~$50-150/segment of value (lounge access, free checked bags, priority boarding, upgrade eligibility). When computing whether to use points or pay cash, factor in whether the user has status that converts cash flights into a better experience.
+
+For users without status who travel enough to benefit, load the `status-match` skill to compare three paths: free direct match (best when available), paid concierge via statusmatch.com (real fees, real status), and card-granted renewable status (Amex Platinum = Hilton Gold + Marriott Gold automatic). The "lifetime restriction" field is critical because a wasted match cannot be undone.
+
+## Multi-Stop Itinerary CPP Benchmarks
+
+For multi-stop or RTW itineraries, the relevant comparison isn't a single one-way's CPP. It's the total cash value of the trip vs the total miles + fees. The `round-the-world` skill is the reference for those products. A few benchmarks:
+
+- **Star Alliance Special Business RTW (paid fare)** is a published cash fare priced via staralliance.com for 26,000-mile distance bands. Historically reported in the mid-thousands to low-five-figures USD range depending on routing and origin country; verify live at staralliance.com/en/book-fly. The cash value of equivalent revenue J one-ways is much higher, which makes the RTW fare a strong $/business-class-seat play when the routing fits. It is NOT a mileage award — it's a cash booking. Separately, member-program RTW awards (Aeroplan and ANA both discontinued theirs in 2020 and 2025; Lufthansa M&M still offers 195K/400K/540K Y/J/F) are the mileage paths. Don't conflate the two; load the `round-the-world` skill for the real product map.
+- **Iberia Plus intra-Europe off-peak** (3,500 Avios for under 650mi one-way) lands at around 2.0-3.0 cpp on short hops where cash is $80-120, which beats most portal rates and most short-haul awards.
+- **Aeroplan distance-based NA short-haul** (6,000 Aeroplan miles starting price for under 500mi) at $80-120 cash = 1.3-2.0 cpp, comparable to the Chase portal floor.
+
+Always compute the full-itinerary CPP for multi-stop trips, not the per-segment CPP, since stopover and routing benefits compound across segments.

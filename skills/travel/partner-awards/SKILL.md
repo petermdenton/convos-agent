@@ -1,0 +1,50 @@
+---
+name: partner-awards
+description: Loyalty program airline ticketing partnerships (alliance + bilateral). Cross-references credit card currencies to booking programs for award reachability checks.
+category: reference
+summary: Which programs ticket which airlines (alliance + bilateral). Cross-references credit card currencies to booking programs. Reachability workflow.
+---
+
+# Partner Awards
+
+**Reference data:** `~/.hermes/skills/travel/data/partner-awards.json`
+
+When recommending award bookings, check this file to verify:
+1. The booking program can actually ticket the airline you're recommending
+2. Whether the partnership is alliance-based or bilateral
+3. Cross-alliance highlights (VA→ANA, Etihad→AA, Alaska→Starlux, etc.)
+4. Which credit card currencies can reach the booking program
+
+## Cross-Alliance Bookings Are Where the Real Value Hides
+
+The best redemptions often involve booking an airline through a program in a DIFFERENT alliance (or no alliance at all). Always check the `cross_alliance_highlights` section.
+
+## Verification Is Mandatory, Not Optional
+
+When recommending a transfer, ALWAYS verify the transfer path exists in `~/.hermes/skills/travel/data/transfer-partners.json` BEFORE committing to the recommendation. If a user or your own reasoning suggests a transfer path not in the file, verify it before agreeing. The file may be stale, or the path may not exist.
+
+This is a hard gate, not a soft check. Never accept a transfer path at face value.
+
+## Reachability Workflow
+
+When checking if a user can actually book an award flight:
+
+1. **Identify the operating airline.** Star Alliance? oneworld? SkyTeam? Independent?
+2. **List all programs that can ticket it.** Alliance partners + bilateral partners from `partner-awards.json`.
+3. **For each program, check direct balance.** AwardWallet shows what the user has now.
+4. **For each program with insufficient balance, check transfer paths.** `~/.hermes/skills/travel/data/transfer-partners.json` lists every credit card currency → airline program path with the ratio.
+5. **Effective balance = direct balance + max transferable in.** A user with 16K United miles but 145K Chase UR has 161K effective United miles (UR transfers 1:1 to United).
+6. **Drop programs that are unreachable.** Only compare cpp on options the user can actually book.
+
+## Common Failure Modes
+
+- Assuming an airline "can't be booked with points" because the user has zero direct balance. Always check transfer reachability first.
+- Recommending a transfer without verifying the path. Some routes that "seem like they should work" don't (e.g., Amex MR does NOT transfer to United).
+- Missing cross-alliance plays. United metal flights can be booked via Turkish M&S, Avianca LifeMiles, Aeroplan, ANA, and others, often at very different rates.
+
+## See Also
+
+- **`stopovers`** — Per-program stopover rules. Many partner-award bookings include a stopover at no extra mileage cost. The skill documents which programs allow them, the surcharge, the duration, and the booking method (online vs phone). Critical when the trip plan involves any layover beyond a few hours.
+- **`round-the-world`** — Alliance-based RTW + Pacific Circle products that bundle multi-program multi-airline tickets. Star Alliance RTW, oneworld Explorer, oneworld Global Explorer, oneworld Circle Pacific, plus Lufthansa M&M, Qantas, JAL multi-carrier products. Often the cheapest path for 3+ region itineraries that would otherwise require chaining separate awards.
+- **`transfer-bonuses`** — When a transfer bonus is active, the effective ratio changes the reachability calculation. A 30% Amex MR → Virgin Atlantic bonus turns a 50K Virgin award into 38.5K MR, which can flip the recommended currency in the optimization.
+- **`status-match`** — Alliance status propagates across all alliance carriers. Matching into Atmos Gold (oneworld Sapphire) gets the user lounge access and free bags across all of oneworld, not just Alaska. The skill covers free direct matches, paid concierge, and the lifetime restrictions that punish wasted matches.

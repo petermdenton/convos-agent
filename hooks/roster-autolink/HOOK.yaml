@@ -1,0 +1,8 @@
+name: roster-autolink
+description: >
+  Auto-build the trip roster from the chat itself: on every inbound Photon
+  message in a chat with a bound trip, link the sender as a traveler and
+  resolve their real name from macOS Contacts — so the doc's Travelers row
+  shows proper initials (PD, KM, LM) without anyone being asked.
+events:
+  - agent:start

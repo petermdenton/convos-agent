@@ -1,0 +1,8 @@
+name: doc-sync
+description: >
+  Deterministic doc updater: after every agent turn in a Photon chat with a
+  bound trip, fingerprint the trip's state (options, itinerary, summaries,
+  working, log) and re-render the Living Plan doc if anything changed. The
+  model forgetting trip_doc.py update can no longer leave the doc stale.
+events:
+  - agent:end

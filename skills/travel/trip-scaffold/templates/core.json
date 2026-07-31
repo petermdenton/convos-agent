@@ -1,0 +1,165 @@
+{
+  "description": "Core trip scaffold. Sections gated by `when`: always | group | international | multi_base | driving. t_minus = days before departure the task is due.",
+  "sections": [
+    {
+      "title": "Group",
+      "when": "group",
+      "tasks": [
+        {"desc": "Roster locked — hard commit from every traveler", "t_minus": 92},
+        {"desc": "Everyone's dates / budget / departure airport collected (privately)", "t_minus": 92},
+        {"desc": "Money-split method agreed and set up; kitty rules defined", "t_minus": 85},
+        {"desc": "Booking deadline announced — commit with money by this date", "t_minus": 85},
+        {"desc": "Roles assigned: trip lead, bookings owner, money tracker", "t_minus": 85},
+        {"desc": "Who has booked what — tracked", "t_minus": 30},
+        {"desc": "Cost-split ledger current"}
+      ]
+    },
+    {
+      "title": "Dates",
+      "tasks": [
+        {"desc": "Date window confirmed with all travelers", "t_minus": 95},
+        {"desc": "Seasonality / local-holiday check on candidate windows", "t_minus": 92},
+        {"desc": "Exact dates locked", "t_minus": 90},
+        {"desc": "Time off booked and approved — before flights are bought", "t_minus": 85}
+      ]
+    },
+    {
+      "title": "Destination Research",
+      "when": "international",
+      "tasks": [
+        {"desc": "Visa requirement per traveler nationality — official source only", "t_minus": 88},
+        {"desc": "Passport validity rule for destination (6-month / 3-month / blank pages)", "t_minus": 88},
+        {"desc": "Health: recommended vaccines & risks for this route (travel clinic guidance)", "t_minus": 88},
+        {"desc": "Payment culture: cash vs card, ATM strategy, tipping norms", "t_minus": 88},
+        {"desc": "Scarcity list: attractions/experiences that sell out — with booking windows", "t_minus": 88},
+        {"desc": "Seasonal traps: closures, festivals, weather risks in the travel window", "t_minus": 88},
+        {"desc": "Entry/exit extras: onward-ticket proof, arrival cards, customs limits", "t_minus": 60}
+      ]
+    },
+    {
+      "title": "Documents",
+      "when": "international",
+      "tasks": [
+        {"desc": "Every passport checked against destination validity rule", "t_minus": 90},
+        {"desc": "Passport renewals started where needed", "t_minus": 85},
+        {"desc": "Visas applied for (official portal)", "t_minus": 35},
+        {"desc": "Visas approved & verified character-for-character against passports", "t_minus": 21},
+        {"desc": "Copies: passports + visas printed and saved offline for everyone", "t_minus": 14}
+      ]
+    },
+    {
+      "title": "Flights",
+      "tasks": [
+        {"desc": "Search run (kiwi + skiplagged; award search if points in play)", "t_minus": 80},
+        {"desc": "Option chosen — route, airline, cash vs points, per-person price", "t_minus": 75},
+        {"desc": "Fare watch cron set on chosen route", "t_minus": 75},
+        {"desc": "Booked — names verified against passports, confirmations saved", "t_minus": 70},
+        {"desc": "Seats picked / bags added per airline limits", "t_minus": 30},
+        {"desc": "Online check-in", "t_minus": 1}
+      ]
+    },
+    {
+      "title": "Lodging",
+      "tasks": [
+        {"desc": "Area / neighborhood chosen per base", "t_minus": 75},
+        {"desc": "Search run (trivago; vrbo / premium-hotels for groups or luxe)", "t_minus": 70},
+        {"desc": "Booked — capacity & cancellation verified, confirmations saved", "t_minus": 60},
+        {"desc": "First-night arrival details confirmed (check-in time, address saved offline)", "t_minus": 7}
+      ]
+    },
+    {
+      "title": "Excursions & Activities",
+      "tasks": [
+        {"desc": "Shortlist researched and group-ranked", "t_minus": 45},
+        {"desc": "Must-books from the scarcity list booked", "t_minus": 40},
+        {"desc": "Day-by-day itinerary drafted (leave whitespace)", "t_minus": 21},
+        {"desc": "Group-size dinner reservations for locked-in nights", "t_minus": 21}
+      ]
+    },
+    {
+      "title": "Intercity Transport",
+      "when": "multi_base",
+      "tasks": [
+        {"desc": "Legs between bases chosen (flight / train / ferry / van)", "t_minus": 50},
+        {"desc": "Intercity legs booked", "t_minus": 45},
+        {"desc": "Luggage logistics between bases sorted", "t_minus": 21}
+      ]
+    },
+    {
+      "title": "Driving",
+      "when": "driving",
+      "tasks": [
+        {"desc": "License/permit rules checked (IDP where required)", "t_minus": 60},
+        {"desc": "IDPs obtained for all drivers", "t_minus": 40},
+        {"desc": "Rental booked — insurance coverage verified, driving traps researched (tolls, restricted zones)", "t_minus": 30}
+      ]
+    },
+    {
+      "title": "Ground Transport",
+      "tasks": [
+        {"desc": "Airport ↔ lodging plan, both ends (pre-book group-size transfer)", "t_minus": 14},
+        {"desc": "Local transit approach decided (apps installed, passes researched)", "t_minus": 10}
+      ]
+    },
+    {
+      "title": "Health",
+      "when": "international",
+      "tasks": [
+        {"desc": "Travel clinic visits done per research recs", "t_minus": 50},
+        {"desc": "Prescriptions: full-trip supply, original packaging, legality checked", "t_minus": 21},
+        {"desc": "First-aid / repellent / sunscreen kit built", "t_minus": 14},
+        {"desc": "Allergies, blood types, emergency contacts in shared doc", "t_minus": 14}
+      ]
+    },
+    {
+      "title": "Insurance",
+      "tasks": [
+        {"desc": "Travel medical + evacuation coverage bought (activity exclusions checked)", "t_minus": 45},
+        {"desc": "Card trip-protection reviewed to avoid double-buying", "t_minus": 45},
+        {"desc": "Policy numbers + claims hotline saved offline by everyone", "t_minus": 7}
+      ]
+    },
+    {
+      "title": "Money",
+      "tasks": [
+        {"desc": "Budget per person set: flights / lodging / daily / excursions", "t_minus": 85},
+        {"desc": "No-FX-fee cards and ATM strategy sorted per research", "t_minus": 30},
+        {"desc": "Arrival cash plan set", "t_minus": 10},
+        {"desc": "Travel notices set; card-freeze numbers saved", "t_minus": 5}
+      ]
+    },
+    {
+      "title": "Connectivity & Apps",
+      "tasks": [
+        {"desc": "Data sorted: eSIM/roaming bought and installed", "t_minus": 7},
+        {"desc": "Destination apps installed: transport, translate + offline pack, offline maps, split-costs", "t_minus": 7},
+        {"desc": "On-trip group chat created; numbers exchanged", "t_minus": 7}
+      ]
+    },
+    {
+      "title": "Packing",
+      "tasks": [
+        {"desc": "Packing list published — season, dress codes, power adapters, baggage limits", "t_minus": 14},
+        {"desc": "Weather-checked final adjustments", "t_minus": 3}
+      ]
+    },
+    {
+      "title": "Home Logistics",
+      "tasks": [
+        {"desc": "Sitters / mail / plants arranged", "t_minus": 21},
+        {"desc": "Work OOO + handoffs set; mid-trip bills paid", "t_minus": 7},
+        {"desc": "Home-side airport transfer or parking booked", "t_minus": 7},
+        {"desc": "Itinerary + document copies with an emergency contact", "t_minus": 5}
+      ]
+    },
+    {
+      "title": "Final 72 Hours",
+      "tasks": [
+        {"desc": "All flights reconfirmed; schedule changes checked", "t_minus": 3},
+        {"desc": "Documents loaded offline on every phone", "t_minus": 2},
+        {"desc": "Everything charged; entertainment downloaded", "t_minus": 1},
+        {"desc": "Group check-in: passport / visa / cards / meds — from everyone", "t_minus": 1}
+      ]
+    }
+  ]
+}

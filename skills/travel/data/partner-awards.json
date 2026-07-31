@@ -1,0 +1,358 @@
+{
+  "_meta": {
+    "description": "Which loyalty programs can book which airlines for award flights. Covers alliance-based, bilateral, and cross-alliance partnerships. Use this to determine if a user can actually redeem miles on a specific airline.",
+    "last_updated": "2026-03-31",
+    "staleness_days": 90,
+    "notes": "AUDITED 2026-03-31: Fixed VA SkyTeam list (was 4 airlines, now 18), VA online_booking (was false), Iberia/Qatar/Korean Air incomplete alliance lists, Oman Air added to all oneworld programs, TAROM deduped from Flying Blue, Aeroplan Citi TY removed (no direct transfer). Partner availability changes. Always verify on the booking program's website before committing."
+  },
+
+  "programs": {
+    "united_mileageplus": {
+      "display_name": "United MileagePlus",
+      "alliance": "star_alliance",
+      "bookable_airlines": {
+        "star_alliance": ["ANA", "Air Canada", "Air China", "Air India", "Air New Zealand", "Asiana", "Austrian", "Avianca", "Brussels Airlines", "Copa", "Croatia Airlines", "EgyptAir", "Ethiopian", "EVA Air", "LOT Polish", "Lufthansa", "Shenzhen Airlines", "Singapore Airlines", "South African Airways", "SWISS", "TAP Portugal", "Thai Airways", "Turkish Airlines", "United"],
+        "non_alliance": ["Emirates (limited, EWR-DXB only)"]
+      },
+      "transfer_from": ["Chase UR (1:1)", "Bilt (1:1)"],
+      "chart_type": "dynamic",
+      "search_url": "https://www.united.com/en/us/book-flight/mileageplus-awards",
+      "phone": "1-800-864-8331",
+      "online_booking": true,
+      "notes": "Dynamic pricing means no fixed chart. Saver availability (X/I/O fare classes) is the sweet spot. United is stingy with own-metal saver space but releases Star Alliance partner space."
+    },
+
+    "aeroplan": {
+      "display_name": "Air Canada Aeroplan",
+      "alliance": "star_alliance",
+      "bookable_airlines": {
+        "star_alliance": ["ANA", "Air Canada", "Air China", "Air India", "Air New Zealand", "Asiana", "Austrian", "Avianca", "Brussels Airlines", "Copa", "Croatia Airlines", "EgyptAir", "Ethiopian", "EVA Air", "LOT Polish", "Lufthansa", "Shenzhen Airlines", "Singapore Airlines", "South African Airways", "SWISS", "TAP Portugal", "Thai Airways", "Turkish Airlines", "United"],
+        "non_alliance": ["Azul", "Etihad (select routes)", "Juneyao Airlines", "Vistara"]
+      },
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)"],
+      "chart_type": "dynamic_with_tiers",
+      "search_url": "https://www.aircanada.com/aeroplan",
+      "phone": "1-888-247-2262",
+      "online_booking": true,
+      "notes": "Widest Star Alliance availability. Can book Lufthansa First. Punitive cancellation fees ($150+/person). Sometimes blocks partner space when Air Canada operates the route."
+    },
+
+    "virgin_atlantic_flying_club": {
+      "display_name": "Virgin Atlantic Flying Club",
+      "alliance": "skyteam",
+      "bookable_airlines": {
+        "skyteam": ["Aerolíneas Argentinas", "Aeromexico", "Air Europa", "Air France", "China Airlines", "China Eastern", "Delta", "Garuda Indonesia", "Kenya Airways", "KLM", "Korean Air", "Middle East Airlines", "SAS", "Saudia", "TAROM", "Vietnam Airlines", "Virgin Atlantic", "XiamenAir"],
+        "cross_alliance": ["ANA (Star Alliance)"],
+        "non_alliance": []
+      },
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Chase UR (1:1)", "Citi TY (1:1)", "Capital One (via Virgin Red 1:1)", "Wells Fargo (1:1)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.virginatlantic.com",
+      "phone": "1-800-365-9500",
+      "online_booking": true,
+      "online_booking_note": "SkyTeam partners bookable online. ANA (cross-alliance) must be booked by phone.",
+      "notes": "Full SkyTeam member since 2023. Can book ALL SkyTeam airlines online (including SAS for intra-Scandi). THE legendary cross-alliance sweet spot is ANA (Star Alliance) at dramatically lower rates than any Star Alliance program: ANA First 72.5K from West Coast, ANA Business 52.5K. Must call to book ANA."
+    },
+
+    "avianca_lifemiles": {
+      "display_name": "Avianca LifeMiles",
+      "alliance": "star_alliance",
+      "bookable_airlines": {
+        "star_alliance": ["ANA", "Air Canada", "Air China", "Air New Zealand", "Asiana", "Austrian", "Avianca", "Brussels Airlines", "Copa", "EgyptAir", "Ethiopian", "EVA Air", "LOT Polish", "Lufthansa", "Singapore Airlines", "South African Airways", "SWISS", "TAP Portugal", "Thai Airways", "Turkish Airlines", "United"],
+        "non_alliance": []
+      },
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Citi TY (1:1)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.lifemiles.com",
+      "phone": "1-800-284-2622",
+      "online_booking": true,
+      "notes": "Often prices Star Alliance awards cheaper than United or Aeroplan. ANA J for 36K one-way vs 45K on Aeroplan. Miles frequently on sale for purchase at ~1.3cpp. No fuel surcharges on most awards."
+    },
+
+    "turkish_miles_and_smiles": {
+      "display_name": "Turkish Airlines Miles&Smiles",
+      "alliance": "star_alliance",
+      "bookable_airlines": {
+        "star_alliance": ["ANA", "Air Canada", "Air China", "Air India", "Air New Zealand", "Asiana", "Austrian", "Avianca", "Brussels Airlines", "Copa", "EgyptAir", "Ethiopian", "EVA Air", "LOT Polish", "Lufthansa", "Singapore Airlines", "South African Airways", "SWISS", "TAP Portugal", "Thai Airways", "Turkish Airlines", "United"],
+        "non_alliance": []
+      },
+      "transfer_from": ["Bilt (1:1)", "Capital One (1:1)", "Citi TY (1:1)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.turkishairlines.com",
+      "phone": "1-800-874-8875",
+      "online_booking": true,
+      "notes": "DEVALUED Feb 15, 2025. Connections now priced separately (used to be free stopovers). Turkey direct still decent (65K J). Europe now 85-90K J. United transcon Polaris 22.5K is a standout sweet spot."
+    },
+
+    "american_aadvantage": {
+      "display_name": "American Airlines AAdvantage",
+      "alliance": "oneworld",
+      "bookable_airlines": {
+        "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
+        "non_alliance": ["Etihad (bilateral)", "JetBlue (Northeast Alliance remnant)", "GOL"]
+      },
+      "transfer_from": ["Citi TY (1:1)"],
+      "chart_type": "dynamic",
+      "search_url": "https://www.aa.com/aadvantage-program/miles/redeem",
+      "phone": "1-800-882-8880",
+      "online_booking": true,
+      "notes": "Dynamic pricing makes AAdvantage redemptions highly variable. Web specials can be excellent. Often cheaper to book AA metal through Etihad Guest or BA Avios instead of AAdvantage directly."
+    },
+
+    "british_airways_executive_club": {
+      "display_name": "British Airways Executive Club (Avios)",
+      "alliance": "oneworld",
+      "bookable_airlines": {
+        "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
+        "non_alliance": ["Aer Lingus"]
+      },
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)"],
+      "chart_type": "distance_based",
+      "search_url": "https://www.britishairways.com",
+      "phone": "1-800-452-1201",
+      "online_booking": true,
+      "notes": "Avios are shared across BA, Iberia, Qatar, Finnair, and Aer Lingus. Distance-based pricing is great for short-haul. WARNING: BA passes through massive fuel surcharges on BA-metal long-haul ($500-$800+). Book partner airlines via BA to avoid. AA domestic short-haul via BA Avios is a sweet spot."
+    },
+
+    "iberia_plus": {
+      "display_name": "Iberia Plus (Avios)",
+      "alliance": "oneworld",
+      "bookable_airlines": {
+        "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
+        "non_alliance": ["LATAM (select routes)"]
+      },
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (via BA)"],
+      "chart_type": "distance_based",
+      "search_url": "https://www.iberia.com",
+      "online_booking": true,
+      "notes": "Same Avios currency as BA but different award charts. Iberia's chart is often cheaper for flights to Madrid. 40,500 Avios off-peak for US East Coast to Madrid business class."
+    },
+
+    "qatar_privilege_club": {
+      "display_name": "Qatar Airways Privilege Club (Avios)",
+      "alliance": "oneworld",
+      "bookable_airlines": {
+        "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
+        "non_alliance": []
+      },
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (1:1)"],
+      "chart_type": "distance_based",
+      "search_url": "https://www.qatarairways.com",
+      "online_booking": true,
+      "notes": "Avios-based. Qsuites saver at 70K one-way is the target. Hard to find for 2+ passengers. Low surcharges on Qatar metal."
+    },
+
+    "flying_blue": {
+      "display_name": "Air France-KLM Flying Blue",
+      "alliance": "skyteam",
+      "bookable_airlines": {
+        "skyteam": ["Aerolíneas Argentinas", "Aeromexico", "Air Europa", "Air France", "China Airlines", "China Eastern", "Delta", "Garuda Indonesia", "Kenya Airways", "KLM", "Korean Air", "Middle East Airlines", "SAS", "Saudia", "TAROM", "Vietnam Airlines", "Virgin Atlantic", "XiamenAir"],
+        "non_alliance": []
+      },
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (1:1)"],
+      "chart_type": "dynamic",
+      "search_url": "https://www.airfrance.com or https://www.klm.com",
+      "phone": "1-800-237-2747",
+      "online_booking": true,
+      "notes": "Monthly promo awards with discounted rates. UNIQUE: free stopovers on one-way awards (even on partner airlines). Stopovers must be booked by phone. Great for Delta metal (often cheaper than SkyMiles)."
+    },
+
+    "korean_air_skypass": {
+      "display_name": "Korean Air SKYPASS",
+      "alliance": "skyteam",
+      "bookable_airlines": {
+        "skyteam": ["Aerolíneas Argentinas", "Aeromexico", "Air Europa", "Air France", "China Airlines", "China Eastern", "Delta", "Garuda Indonesia", "Kenya Airways", "KLM", "Korean Air", "Middle East Airlines", "SAS", "Saudia", "TAROM", "Vietnam Airlines", "Virgin Atlantic", "XiamenAir"],
+        "non_alliance": ["Alaska Airlines (bilateral)", "Hawaiian Airlines"]
+      },
+      "transfer_from": ["Chase UR (1:1)", "Citi TY (1:1)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.koreanair.com",
+      "phone": "1-800-438-5000",
+      "online_booking": false,
+      "online_booking_note": "Partner awards must be booked by phone. Round-trip only for partners.",
+      "notes": "80K round-trip business to Europe on Delta/SkyTeam is a standout. Allows stopover AND open jaw. Can only book for self or registered family members. Partner awards are round-trip only."
+    },
+
+    "alaska_mileage_plan": {
+      "display_name": "Alaska Airlines Mileage Plan",
+      "alliance": "oneworld",
+      "bookable_airlines": {
+        "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
+        "non_alliance": ["Aer Lingus", "Air Tahiti Nui", "Condor", "Hainan Airlines", "Icelandair", "Korean Air", "Philippine Airlines", "Porter Airlines", "Starlux Airlines"],
+        "ending_soon": ["LATAM (ending October 1, 2026)"]
+      },
+      "transfer_from": ["Bilt (1:1)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.alaskaair.com",
+      "phone": "1-800-252-7522",
+      "online_booking": true,
+      "notes": "Massive partner network extending well beyond oneworld. Alaska is Starlux's ONLY points booking partner. Korean Air bookable via Alaska (oneworld booking SkyTeam). Hainan Airlines and Condor are unique partners. NOTE: Alaska rebranded to Atmos Rewards in 2025, merging with Hawaiian. See the atmos_rewards entry."
+    },
+
+    "atmos_rewards": {
+      "display_name": "Atmos Rewards (Alaska + Hawaiian)",
+      "alliance": "oneworld",
+      "bookable_airlines": {
+        "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
+        "non_alliance": ["Aer Lingus", "Air Tahiti Nui", "Condor", "Hainan Airlines", "Hawaiian Airlines", "Icelandair", "Korean Air", "Philippine Airlines", "Porter Airlines", "Starlux Airlines"]
+      },
+      "transfer_from": ["Bilt (1:1)", "Marriott Bonvoy (60K:25K)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.alaskaair.com",
+      "phone": "1-800-252-7522",
+      "online_booking": true,
+      "oceania_notes": "Key Oceania partners: Fiji Airways, Qantas, Air Tahiti Nui, Hawaiian (HNL-PPT, HNL-RAR). Free stopover on one-way. No change/cancel fees. Multi-partner itineraries (outside AA/BA) can't be booked as a single ticket. VERIFY specific award rates on alaskaair.com before committing.",
+      "notes": "Renamed from Alaska Mileage Plan; merged Alaska + Hawaiian loyalty programs. Massive partner network extending well beyond oneworld. Free stopover on one-way awards. No change or cancellation fees on award tickets. $12.50 nonrefundable partner booking fee."
+    },
+
+    "qantas_frequent_flyer": {
+      "display_name": "Qantas Frequent Flyer",
+      "alliance": "oneworld",
+      "bookable_airlines": {
+        "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Qantas", "Qatar Airways", "Royal Jordanian", "SriLankan Airlines"],
+        "non_alliance": ["Air Calin", "Air France", "China Eastern", "Emirates", "Fiji Airways", "Jetstar", "Vietnam Airlines"]
+      },
+      "transfer_from": ["Amex MR (1:1)", "Capital One (1:1)", "Citi TY (1:1)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.qantas.com",
+      "phone": "1-800-227-4500",
+      "online_booking": true,
+      "oceania_notes": "Can book Jetstar (LCC) awards, including Hawaii-Australia. Jetstar business is closer to premium economy, not lie-flat — compare against cash, which is often cheap on Jetstar. VERIFY current award rates on qantas.com before committing.",
+      "notes": "Qantas charges points fees to change (5,000) and cancel (6,000) per passenger. Carrier charges apply on many partner awards."
+    },
+
+    "ana_mileage_club": {
+      "display_name": "ANA Mileage Club",
+      "alliance": "star_alliance",
+      "bookable_airlines": {
+        "star_alliance": ["ANA", "Air Canada", "Air China", "Air India", "Air New Zealand", "Asiana", "Austrian", "Avianca", "Brussels Airlines", "Copa", "EgyptAir", "Ethiopian", "EVA Air", "LOT Polish", "Lufthansa", "Singapore Airlines", "South African Airways", "SWISS", "TAP Portugal", "Thai Airways", "Turkish Airlines", "United"],
+        "non_alliance": ["Etihad", "Garuda Indonesia", "Philippine Airlines", "Virgin Atlantic"]
+      },
+      "transfer_from": ["Amex MR (1:1)", "Marriott Bonvoy (60K:25K)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.ana.co.jp/en/us/",
+      "phone": "1-800-235-9262",
+      "online_booking": true,
+      "oceania_notes": "New chart since June 24, 2025: one-way awards bookable on ANA metal AND Star Alliance partners at half the round-trip rate (no stopovers on one-ways). ANA-metal pricing is seasonal (low/regular/high) and applies only to 100% ANA-metal itineraries; the partner chart is flat. North America-Oceania business runs ~68.5K+ one-way depending on season. No fuel surcharges on Air Canada, Air China, Air NZ, Avianca, Copa, Etihad, United; low surcharges on ANA, Asiana, LOT Polish, Turkish. VERIFY rates on ana.co.jp — the site still hosts pre-June-2025 legacy chart pages that quote outdated prices.",
+      "notes": "Very limited transfer access — Amex MR only (plus Marriott at a poor ratio). Free to change, 3,000 miles to cancel. Round-the-world awards discontinued with the June 2025 revamp. SAS no longer bookable (left Star Alliance for SkyTeam September 2024)."
+    },
+
+    "emirates_skywards": {
+      "display_name": "Emirates Skywards",
+      "alliance": "none",
+      "bookable_airlines": {
+        "bilateral_partners": ["Aegean", "Air Mauritius", "Azul", "Bangkok Airways", "Condor", "Copa", "easyJet (redeem only)", "GOL", "Japan Airlines", "Jet2 (redeem only)", "Jetstar", "Korean Air", "Malaysia Airlines", "Olympic Air", "Qantas", "South African Airways", "TAP Portugal"],
+        "own_metal": ["Emirates"]
+      },
+      "transfer_from": ["Amex MR (1:0.8)", "Bilt (1:1)", "Capital One (4:3)", "Citi TY (5:4)"],
+      "chart_type": "distance_based",
+      "search_url": "https://www.emirates.com",
+      "online_booking": true,
+      "notes": "Not in any alliance. New partner chart (March 4, 2026) dropped rates up to 76%. Short-haul starting 3,000 miles. Separate Qantas chart. JAL, Air Canada, Jetstar still on old chart. Good for booking Japan Airlines metal."
+    },
+
+    "etihad_guest": {
+      "display_name": "Etihad Guest",
+      "alliance": "none",
+      "bookable_airlines": {
+        "bilateral_partners": ["American Airlines", "Air New Zealand", "ANA", "Asiana", "China Eastern", "Garuda Indonesia", "Hainan Airlines", "Hong Kong Airlines", "Malaysia Airlines", "Air Serbia", "Royal Air Maroc", "SAS"],
+        "own_metal": ["Etihad Airways"]
+      },
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Citi TY (1:1)"],
+      "chart_type": "distance_based",
+      "search_url": "https://www.etihad.com",
+      "online_booking": true,
+      "notes": "Not in any alliance but has excellent bilateral partners. Etihad's AA chart is often cheaper than AAdvantage's own dynamic pricing. Book AA metal through Etihad for fixed rates. Also books ANA (cross-alliance). SAS bookable via bilateral partnership (6,000 pts econ, 20,000 pts biz on intra-Scandi)."
+    },
+
+    "jetblue_trueblue": {
+      "display_name": "JetBlue TrueBlue",
+      "alliance": "none",
+      "bookable_airlines": {
+        "bilateral_partners": ["Cape Air", "Condor", "Etihad", "Icelandair", "Japan Airlines (redeem only)", "Qatar Airways", "United (Blue Sky partnership)"],
+        "earn_only": ["Singapore Airlines", "South African Airways"],
+        "own_metal": ["JetBlue"]
+      },
+      "transfer_from": ["Amex MR (250:200)", "Capital One (5:3)", "Chase UR (1:1)", "Citi TY (1:1)", "Wells Fargo (1:1)"],
+      "chart_type": "revenue_based",
+      "search_url": "https://trueblue.jetblue.com",
+      "online_booking": true,
+      "notes": "Not in any alliance. Revenue-based pricing means value scales with fare cost. New Blue Sky partnership with United expands domestic reach. Can redeem on JAL."
+    },
+
+    "delta_skymiles": {
+      "display_name": "Delta SkyMiles",
+      "alliance": "skyteam",
+      "bookable_airlines": {
+        "skyteam": ["Aerolíneas Argentinas", "Aeromexico", "Air Europa", "Air France", "China Airlines", "China Eastern", "Delta", "Garuda Indonesia", "Kenya Airways", "KLM", "Korean Air", "Middle East Airlines", "SAS", "Saudia", "TAROM", "Vietnam Airlines", "Virgin Atlantic", "XiamenAir"],
+        "non_alliance": ["LATAM", "Virgin Australia (codeshare)"]
+      },
+      "transfer_from": ["Amex MR (1:1)"],
+      "chart_type": "dynamic",
+      "search_url": "https://www.delta.com",
+      "phone": "1-800-323-2323",
+      "online_booking": true,
+      "notes": "Fully dynamic pricing. No published chart. Often poor value for SkyMiles redemptions. Better to use Flying Blue or Korean Air SKYPASS to book Delta/SkyTeam flights. Amex MR is the only major transfer partner."
+    },
+
+    "singapore_krisflyer": {
+      "display_name": "Singapore Airlines KrisFlyer",
+      "alliance": "star_alliance",
+      "bookable_airlines": {
+        "star_alliance": ["ANA", "Air Canada", "Air China", "Air India", "Air New Zealand", "Asiana", "Austrian", "Avianca", "Brussels Airlines", "Copa", "EgyptAir", "Ethiopian", "EVA Air", "LOT Polish", "Lufthansa", "SWISS", "TAP Portugal", "Thai Airways", "Turkish Airlines", "United", "Singapore Airlines"],
+        "non_alliance": ["Virgin Australia"]
+      },
+      "transfer_from": ["Amex MR (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (1:1)"],
+      "chart_type": "fixed",
+      "search_url": "https://www.singaporeair.com",
+      "phone": "1-800-742-3333",
+      "online_booking": true,
+      "notes": "Best way to book Singapore Airlines Suites (the gold standard of first class). Also books Star Alliance partners. Low surcharges on SQ metal. Waitlist feature available."
+    }
+  },
+
+  "cross_alliance_highlights": [
+    {
+      "name": "Virgin Atlantic → ANA",
+      "from_alliance": "skyteam",
+      "to_alliance": "star_alliance",
+      "why": "The single most valuable cross-alliance partnership. ANA First 72.5K, Business 52.5K from West Coast. No other Star Alliance program comes close.",
+      "transfer_currencies": ["Amex MR", "Bilt", "Chase UR", "Citi TY", "Capital One (via Virgin Red)", "Wells Fargo"]
+    },
+    {
+      "name": "Alaska → Korean Air",
+      "from_alliance": "oneworld",
+      "to_alliance": "skyteam",
+      "why": "Book Korean Air or SkyTeam partner flights through Alaska's partner chart.",
+      "transfer_currencies": ["Bilt"]
+    },
+    {
+      "name": "Alaska → Starlux",
+      "from_alliance": "oneworld",
+      "to_alliance": "none",
+      "why": "Alaska is Starlux's ONLY points booking partner. No other loyalty program can book Starlux award flights.",
+      "transfer_currencies": ["Bilt"]
+    },
+    {
+      "name": "Etihad → American Airlines",
+      "from_alliance": "none",
+      "to_alliance": "oneworld",
+      "why": "Etihad's fixed chart for AA metal is often cheaper than AA's own dynamic pricing. Book AA flights through Etihad Guest.",
+      "transfer_currencies": ["Amex MR", "Bilt", "Capital One", "Citi TY"]
+    },
+    {
+      "name": "Emirates → Japan Airlines",
+      "from_alliance": "none",
+      "to_alliance": "oneworld",
+      "why": "One of the best ways to book JAL business class. Emirates new partner chart (March 2026) dropped rates significantly.",
+      "transfer_currencies": ["Amex MR", "Bilt", "Capital One", "Citi TY"]
+    },
+    {
+      "name": "Flying Blue → Delta",
+      "from_alliance": "skyteam",
+      "to_alliance": "skyteam",
+      "why": "Same alliance but different economics. Flying Blue often prices Delta flights cheaper than SkyMiles does, plus free stopovers.",
+      "transfer_currencies": ["Amex MR", "Bilt", "Capital One", "Chase UR", "Citi TY"]
+    }
+  ]
+}

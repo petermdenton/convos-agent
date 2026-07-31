@@ -1,0 +1,181 @@
+model:
+  default: anthropic/claude-sonnet-5
+  provider: nous
+  base_url: https://inference-api.nousresearch.com/v1
+agent:
+  max_turns: 150
+  verbose: false
+  reasoning_effort: medium
+  personalities:
+    concierge: You are a world-class travel concierge. Polished, warm, and 
+      decisive — you always have a recommendation and a backup. Every answer 
+      moves the trip forward.
+    dealhunter: You are an obsessive fare hacker. You live for mistake fares, 
+      hidden-city routings, and positioning flights. Always quote the savings, 
+      always flag the risks, never pay retail.
+    pointsnerd: You are an award-travel optimizer. You think in cents-per-point,
+      transfer partners, and sweet spots. Cash is a last resort; a 1.4cpp 
+      redemption is a personal insult.
+    localguide: You are the friend who's been everywhere. Skip the tourist traps
+      — you recommend the back-street noodle shop, the 7am trailhead, the 
+      neighborhood worth staying in. Specific names, always.
+    luxe: You are a luxury travel specialist. Suites, flagship lounges, FHR 
+      perks, and champagne on boarding. Price matters less than getting it 
+      exquisitely right — but you still never overpay for what status gets free.
+    backpacker: You are a seasoned budget traveler. Overnight buses, shoulder 
+      seasons, free walking tours, and hostels that don't suck. Every dollar 
+      saved is another day on the road.
+    pirate: Arrr! Ye be talkin' to Captain Convos, the saltiest travel agent to 
+      sail the seven seas! Chart yer courses, plunder the cheapest fares, and 
+      hunt fare-drop treasure wherever it be buried. Every layover be an 
+      adventure! Yo ho ho!
+terminal:
+  backend: local
+  cwd: .
+  timeout: 180
+  home_mode: auto
+  container_cpu: 1
+  container_memory: 5120
+  container_disk: 51200
+  container_persistent: true
+  docker_mount_cwd_to_workspace: false
+  lifetime_seconds: 300
+web:
+  backend: firecrawl
+  use_gateway: true
+browser:
+  inactivity_timeout: 120
+  cloud_provider: browser-use
+  use_gateway: true
+tool_loop_guardrails:
+  warnings_enabled: true
+  hard_stop_enabled: false
+  warn_after:
+    exact_failure: 2
+    same_tool_failure: 3
+    idempotent_no_progress: 2
+  hard_stop_after:
+    exact_failure: 5
+    same_tool_failure: 8
+    idempotent_no_progress: 5
+compression:
+  enabled: true
+  threshold: 0.5
+  target_ratio: 0.2
+  protect_last_n: 20
+  protect_first_n: 3
+  codex_gpt55_autoraise: true
+  codex_app_server_auto: native
+prompt_caching:
+  cache_ttl: 5m
+auxiliary:
+  vision:
+    provider: nous
+    model: anthropic/claude-sonnet-5
+display:
+  compact: false
+  busy_input_mode: interrupt
+  bell_on_complete: false
+  show_reasoning: false
+  streaming: true
+  skin: default
+  interim_assistant_messages: false
+  tool_progress: all
+  cleanup_progress: false
+  long_running_notifications: false
+  busy_ack_detail: false
+  busy_ack_enabled: false
+  memory_notifications: off
+  background_process_notifications: none
+tts:
+  provider: openai
+  use_gateway: true
+stt:
+  enabled: true
+  provider: openai
+  local:
+    model: base
+  openai:
+    model: whisper-1
+  use_gateway: true
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+  nudge_interval: 10
+  flush_min_turns: 6
+delegation:
+  max_iterations: 50
+skills:
+  creation_nudge_interval: 15
+code_execution:
+  timeout: 300
+  max_tool_calls: 50
+streaming:
+  enabled: false
+onboarding:
+  seen:
+    profile_build_offered: true
+    tool_progress_prompt: true
+    busy_input_prompt: true
+updates:
+  pre_update_backup: false
+  backup_keep: 5
+  non_interactive_local_changes: stash
+_config_version: 33
+session_reset:
+  mode: none
+  idle_minutes: 1440
+  at_hour: 4
+group_sessions_per_user: true
+platform_toolsets:
+  cli:
+    - hermes-cli
+  telegram:
+    - hermes-telegram
+  discord:
+    - hermes-discord
+  whatsapp:
+    - hermes-whatsapp
+  slack:
+    - hermes-slack
+  signal:
+    - hermes-signal
+  homeassistant:
+    - hermes-homeassistant
+  qqbot:
+    - hermes-qqbot
+  yuanbao:
+    - hermes-yuanbao
+  teams:
+    - hermes-teams
+  google_chat:
+    - hermes-google_chat
+image_gen:
+  use_gateway: true
+video_gen:
+  provider: fal
+  use_gateway: true
+plugins:
+  enabled:
+    - platforms/photon
+  disabled: []
+mcp_servers:
+  kiwi:
+    url: https://mcp.kiwi.com
+    enabled: true
+  skiplagged:
+    url: https://mcp.skiplagged.com/mcp
+    enabled: true
+  trivago:
+    url: https://mcp.trivago.com/mcp
+    enabled: true
+  ferryhopper:
+    url: https://mcp.ferryhopper.com/mcp
+    enabled: true
+platforms:
+  photon:
+    enabled: true
+approvals:
+  destructive_slash_confirm: false

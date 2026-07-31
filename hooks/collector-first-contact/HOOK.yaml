@@ -1,0 +1,9 @@
+name: collector-first-contact
+description: >
+  Deterministic first contact for every Photon chat: on the first message from
+  a chat with no bound trip, create the trip container, create the Living Plan
+  Google Doc, and send the single welcome message with the doc link — in code,
+  before the model can greet. The agent then finds the trip already bound and
+  stays in silent collector duty.
+events:
+  - agent:start

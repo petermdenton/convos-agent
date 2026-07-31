@@ -1,0 +1,183 @@
+{
+  "_meta": {
+    "description": "Airline alliance membership and loyalty programs. Used for determining which programs can book which airlines.",
+    "last_updated": "2026-03-31",
+    "staleness_days": 90,
+    "notes": "ITA Airways left SkyTeam (Feb-Apr 2025), expected to join Star Alliance first half 2026. SAS moved from Star Alliance to SkyTeam Sep 1, 2024. Fiji Airways upgraded to full oneworld member 2025. Oman Air joined oneworld Jun 30, 2025. Hawaiian Airlines joining oneworld Apr 22, 2026 (6 days away)."
+  },
+
+  "star_alliance": {
+    "founded": 1997,
+    "members": [
+      {"airline": "Aegean Airlines", "iata": "A3", "country": "Greece", "loyalty_program": "Miles+Bonus", "hubs": ["ATH"]},
+      {"airline": "Air Canada", "iata": "AC", "country": "Canada", "loyalty_program": "Aeroplan", "hubs": ["YYZ", "YUL", "YVR"], "founding_member": true},
+      {"airline": "Air China", "iata": "CA", "country": "China", "loyalty_program": "PhoenixMiles", "hubs": ["PEK"]},
+      {"airline": "Air India", "iata": "AI", "country": "India", "loyalty_program": "Flying Returns", "hubs": ["DEL", "BOM"]},
+      {"airline": "Air New Zealand", "iata": "NZ", "country": "New Zealand", "loyalty_program": "Airpoints", "hubs": ["AKL"]},
+      {"airline": "ANA (All Nippon Airways)", "iata": "NH", "country": "Japan", "loyalty_program": "ANA Mileage Club", "hubs": ["NRT", "HND"]},
+      {"airline": "Asiana Airlines", "iata": "OZ", "country": "South Korea", "loyalty_program": "Asiana Club", "hubs": ["ICN"]},
+      {"airline": "Austrian Airlines", "iata": "OS", "country": "Austria", "loyalty_program": "Miles & More", "hubs": ["VIE"], "parent_group": "Lufthansa Group"},
+      {"airline": "Avianca", "iata": "AV", "country": "Colombia", "loyalty_program": "LifeMiles", "hubs": ["BOG"]},
+      {"airline": "Brussels Airlines", "iata": "SN", "country": "Belgium", "loyalty_program": "Miles & More", "hubs": ["BRU"], "parent_group": "Lufthansa Group"},
+      {"airline": "Copa Airlines", "iata": "CM", "country": "Panama", "loyalty_program": "ConnectMiles", "hubs": ["PTY"]},
+      {"airline": "Croatia Airlines", "iata": "OU", "country": "Croatia", "loyalty_program": "Miles & More", "hubs": ["ZAG"]},
+      {"airline": "EgyptAir", "iata": "MS", "country": "Egypt", "loyalty_program": "EgyptAir Plus", "hubs": ["CAI"]},
+      {"airline": "Ethiopian Airlines", "iata": "ET", "country": "Ethiopia", "loyalty_program": "ShebaMiles", "hubs": ["ADD"]},
+      {"airline": "EVA Air", "iata": "BR", "country": "Taiwan", "loyalty_program": "Infinity MileageLands", "hubs": ["TPE"]},
+      {"airline": "LOT Polish Airlines", "iata": "LO", "country": "Poland", "loyalty_program": "Miles & More", "hubs": ["WAW"]},
+      {"airline": "Lufthansa", "iata": "LH", "country": "Germany", "loyalty_program": "Miles & More", "hubs": ["FRA", "MUC"], "founding_member": true, "parent_group": "Lufthansa Group"},
+      {"airline": "Shenzhen Airlines", "iata": "ZH", "country": "China", "loyalty_program": "PhoenixMiles", "hubs": ["SZX"]},
+      {"airline": "Singapore Airlines", "iata": "SQ", "country": "Singapore", "loyalty_program": "KrisFlyer", "hubs": ["SIN"]},
+      {"airline": "South African Airways", "iata": "SA", "country": "South Africa", "loyalty_program": "Voyager", "hubs": ["JNB"]},
+      {"airline": "SWISS", "iata": "LX", "country": "Switzerland", "loyalty_program": "Miles & More", "hubs": ["ZRH"], "parent_group": "Lufthansa Group"},
+      {"airline": "TAP Air Portugal", "iata": "TP", "country": "Portugal", "loyalty_program": "Miles&Go", "hubs": ["LIS"]},
+      {"airline": "Thai Airways", "iata": "TG", "country": "Thailand", "loyalty_program": "Royal Orchid Plus", "hubs": ["BKK"], "founding_member": true},
+      {"airline": "Turkish Airlines", "iata": "TK", "country": "Turkey", "loyalty_program": "Miles&Smiles", "hubs": ["IST"]},
+      {"airline": "United Airlines", "iata": "UA", "country": "USA", "loyalty_program": "MileagePlus", "hubs": ["EWR", "IAH", "ORD", "SFO", "IAD", "DEN", "LAX"], "founding_member": true}
+    ],
+    "pending_members": [
+      {"airline": "ITA Airways", "iata": "AZ", "country": "Italy", "loyalty_program": "Volare", "hubs": ["FCO", "MXP"], "expected_join": "first half 2026", "parent_group": "Lufthansa Group", "note": "Left SkyTeam Feb-Apr 2025. Integration into Star Alliance underway."}
+    ],
+    "connecting_partners": [
+      {"airline": "Juneyao Air", "iata": "HO", "country": "China"}
+    ]
+  },
+
+  "oneworld": {
+    "founded": 1999,
+    "members": [
+      {"airline": "Alaska Airlines", "iata": "AS", "country": "USA", "loyalty_program": "Atmos Rewards", "hubs": ["SEA"]},
+      {"airline": "American Airlines", "iata": "AA", "country": "USA", "loyalty_program": "AAdvantage", "hubs": ["DFW", "CLT", "MIA", "ORD", "PHL", "PHX"]},
+      {"airline": "British Airways", "iata": "BA", "country": "UK", "loyalty_program": "Executive Club (Avios)", "hubs": ["LHR"], "surcharge_warning": "High fuel surcharges on BA metal awards"},
+      {"airline": "Cathay Pacific", "iata": "CX", "country": "Hong Kong", "loyalty_program": "Asia Miles", "hubs": ["HKG"]},
+      {"airline": "Fiji Airways", "iata": "FJ", "country": "Fiji", "loyalty_program": "AAdvantage (via American)", "hubs": ["NAN"], "note": "Upgraded from Connect to full member 2025"},
+      {"airline": "Finnair", "iata": "AY", "country": "Finland", "loyalty_program": "Avios (Finnair Plus)", "hubs": ["HEL"]},
+      {"airline": "Iberia", "iata": "IB", "country": "Spain", "loyalty_program": "Iberia Plus (Avios)", "hubs": ["MAD"]},
+      {"airline": "Japan Airlines", "iata": "JL", "country": "Japan", "loyalty_program": "JAL Mileage Bank", "hubs": ["NRT", "HND"]},
+      {"airline": "Malaysia Airlines", "iata": "MH", "country": "Malaysia", "loyalty_program": "Enrich", "hubs": ["KUL"]},
+      {"airline": "Qantas", "iata": "QF", "country": "Australia", "loyalty_program": "Qantas Frequent Flyer", "hubs": ["SYD", "MEL"]},
+      {"airline": "Qatar Airways", "iata": "QR", "country": "Qatar", "loyalty_program": "Privilege Club (Avios)", "hubs": ["DOH"]},
+      {"airline": "Royal Air Maroc", "iata": "AT", "country": "Morocco", "loyalty_program": "Safar Flyer", "hubs": ["CMN"]},
+      {"airline": "Royal Jordanian", "iata": "RJ", "country": "Jordan", "loyalty_program": "Royal Club", "hubs": ["AMM"]},
+      {"airline": "SriLankan Airlines", "iata": "UL", "country": "Sri Lanka", "loyalty_program": "FlySmiLes", "hubs": ["CMB"]},
+      {"airline": "Oman Air", "iata": "WY", "country": "Oman", "loyalty_program": "Sindbad", "hubs": ["MCT"], "note": "Joined Jun 30, 2025"}
+    ],
+    "pending_members": [
+      {"airline": "Hawaiian Airlines", "iata": "HA", "country": "USA", "loyalty_program": "Atmos Rewards (via Alaska)", "hubs": ["HNL"], "expected_join": "2026-04-22", "note": "Part of Alaska Air Group. Will share Atmos Rewards program. Joining in 6 days."}
+    ],
+    "potential_members": [
+      {"airline": "Starlux Airlines", "iata": "JX", "country": "Taiwan", "note": "Has expressed interest, acceptance not confirmed"}
+    ]
+  },
+
+  "skyteam": {
+    "founded": 2000,
+    "members": [
+      {"airline": "Aeroflot", "iata": "SU", "country": "Russia", "loyalty_program": "Aeroflot Bonus", "hubs": ["SVO"], "status": "suspended", "note": "Suspended since 2022 due to Russia-Ukraine conflict"},
+      {"airline": "Aerolíneas Argentinas", "iata": "AR", "country": "Argentina", "loyalty_program": "Aerolíneas Plus", "hubs": ["EZE"]},
+      {"airline": "Aeromexico", "iata": "AM", "country": "Mexico", "loyalty_program": "Club Premier", "hubs": ["MEX"]},
+      {"airline": "Air Europa", "iata": "UX", "country": "Spain", "loyalty_program": "SUMA", "hubs": ["MAD"]},
+      {"airline": "Air France", "iata": "AF", "country": "France", "loyalty_program": "Flying Blue", "hubs": ["CDG"]},
+      {"airline": "China Airlines", "iata": "CI", "country": "Taiwan", "loyalty_program": "Dynasty Flyer", "hubs": ["TPE"]},
+      {"airline": "China Eastern", "iata": "MU", "country": "China", "loyalty_program": "Eastern Miles", "hubs": ["PVG", "SHA"]},
+      {"airline": "Delta Air Lines", "iata": "DL", "country": "USA", "loyalty_program": "SkyMiles", "hubs": ["ATL", "DTW", "LAX", "MSP", "JFK", "SEA", "SLC", "BOS"]},
+      {"airline": "Garuda Indonesia", "iata": "GA", "country": "Indonesia", "loyalty_program": "GarudaMiles", "hubs": ["CGK"]},
+      {"airline": "Kenya Airways", "iata": "KQ", "country": "Kenya", "loyalty_program": "Flying Blue", "hubs": ["NBO"]},
+      {"airline": "KLM", "iata": "KL", "country": "Netherlands", "loyalty_program": "Flying Blue", "hubs": ["AMS"]},
+      {"airline": "Korean Air", "iata": "KE", "country": "South Korea", "loyalty_program": "SKYPASS", "hubs": ["ICN"]},
+      {"airline": "Middle East Airlines", "iata": "ME", "country": "Lebanon", "loyalty_program": "Cedar Miles", "hubs": ["BEY"]},
+      {"airline": "SAS (Scandinavian Airlines)", "iata": "SK", "country": "Sweden/Denmark/Norway", "loyalty_program": "EuroBonus", "hubs": ["CPH", "OSL", "ARN"], "note": "Joined SkyTeam Sep 1, 2024 (was Star Alliance founding member)"},
+      {"airline": "Saudia", "iata": "SV", "country": "Saudi Arabia", "loyalty_program": "Alfursan", "hubs": ["JED", "RUH"]},
+      {"airline": "TAROM", "iata": "RO", "country": "Romania", "loyalty_program": "Flying Blue", "hubs": ["OTP"]},
+      {"airline": "Vietnam Airlines", "iata": "VN", "country": "Vietnam", "loyalty_program": "Lotusmiles", "hubs": ["HAN", "SGN"]},
+      {"airline": "Virgin Atlantic", "iata": "VS", "country": "UK", "loyalty_program": "Flying Club", "hubs": ["LHR"], "note": "Joined 2023. Delta joint venture partner."},
+      {"airline": "XiamenAir", "iata": "MF", "country": "China", "loyalty_program": "Egret Club", "hubs": ["XMN"]}
+    ],
+    "departed": [
+      {"airline": "ITA Airways", "iata": "AZ", "departure_date": "2025-02-03", "note": "Left SkyTeam to join Star Alliance (Lufthansa Group acquisition)"},
+      {"airline": "Czech Airlines", "iata": "OK", "note": "No longer listed as member"}
+    ]
+  },
+
+  "non_alliance_notable": [
+    {"airline": "Emirates", "iata": "EK", "country": "UAE", "loyalty_program": "Skywards", "hubs": ["DXB"], "note": "Not in any alliance. Extensive bilateral partnerships."},
+    {"airline": "Etihad Airways", "iata": "EY", "country": "UAE", "loyalty_program": "Etihad Guest", "hubs": ["AUH"], "note": "Not in any alliance. Has partner programs."},
+    {"airline": "Southwest Airlines", "iata": "WN", "country": "USA", "loyalty_program": "Rapid Rewards", "hubs": ["DAL", "MDW", "BWI", "DEN", "LAS"], "note": "No alliance. No partner awards."},
+    {"airline": "JetBlue", "iata": "B6", "country": "USA", "loyalty_program": "TrueBlue", "hubs": ["JFK", "BOS", "FLL"], "note": "No alliance. Limited partnerships."},
+    {"airline": "Starlux Airlines", "iata": "JX", "country": "Taiwan", "loyalty_program": "COSMILE", "hubs": ["TPE"], "note": "Interested in oneworld. Premium carrier."},
+    {"airline": "Zipair", "iata": "ZG", "country": "Japan", "loyalty_program": null, "hubs": ["NRT"], "note": "JAL low-cost subsidiary. No alliance, no miles program."}
+  ],
+
+  "key_booking_relationships": {
+    "_description": "Which loyalty programs can book which airlines. This is the critical data for award travel. Not exhaustive, just the most commonly used paths.",
+    "united_mileageplus": {
+      "books_on": "All Star Alliance airlines plus select partners",
+      "best_for": ["United metal (low surcharges)", "ANA (via Star Alliance)", "Lufthansa (high surcharges)", "Swiss (high surcharges)"],
+      "search_at": "united.com",
+      "book_at": "united.com or call 1-800-864-8331"
+    },
+    "aeroplan": {
+      "books_on": "All Star Alliance airlines plus extensive partner network (Etihad, Emirates, and more)",
+      "best_for": ["Star Alliance business/first class", "Lufthansa First Class", "Mixed-alliance itineraries", "Europe from Northeast US"],
+      "search_at": "aircanada.com/aeroplan",
+      "book_at": "aircanada.com or call 1-888-247-2262",
+      "note": "Cancel fees apply per person. Some partner availability blocked when Air Canada alternatives exist."
+    },
+    "virgin_atlantic_flying_club": {
+      "books_on": "ANA, Delta, Virgin Atlantic, Air France, KLM",
+      "best_for": ["ANA First/Business Class to Japan (THE sweet spot)", "Delta One"],
+      "search_at": "united.com (for ANA space), delta.com (for Delta space)",
+      "book_at": "Call 1-800-365-9500 (ANA awards MUST be booked by phone)",
+      "note": "Get a hold from VA before transferring points. 48 hours to complete transfer."
+    },
+    "turkish_miles_smiles": {
+      "books_on": "Turkish Airlines and Star Alliance partners",
+      "best_for": ["United domestic flights (10K/15K)", "Turkish Airlines to Turkey (65K J)", "Star Alliance business to Europe (85-90K)"],
+      "search_at": "turkishairlines.com or united.com (for partner space)",
+      "book_at": "turkishairlines.com or call 1-800-874-8875"
+    },
+    "avianca_lifemiles": {
+      "books_on": "Star Alliance airlines",
+      "best_for": ["ANA business (36K vs 45K Aeroplan)", "Cheaper Star Alliance awards than Aeroplan/United", "Miles are easy to buy on sale"],
+      "search_at": "lifemiles.com or united.com",
+      "book_at": "lifemiles.com"
+    },
+    "flying_blue": {
+      "books_on": "SkyTeam airlines and select partners",
+      "best_for": ["Promo awards to Europe (can be very cheap)", "Free stopovers on one-way awards"],
+      "search_at": "airfrance.com or klm.com",
+      "book_at": "airfrance.com or call 1-800-237-2747 (stopovers by phone)"
+    },
+    "korean_air_skypass": {
+      "books_on": "SkyTeam airlines",
+      "best_for": ["Round-trip business to Europe (80K)", "Stopover + open jaw allowed"],
+      "search_at": "koreanair.com",
+      "book_at": "Call 1-800-438-5000. Can put tickets on hold.",
+      "note": "Partner awards require round-trip booking. Can only book for self or registered family."
+    },
+    "aadvantage": {
+      "books_on": "oneworld airlines and select partners",
+      "best_for": ["oneworld partner flights", "Cathay Pacific business/first class", "JAL business class"],
+      "search_at": "aa.com",
+      "book_at": "aa.com or call 1-800-882-8880"
+    },
+    "iberia_avios": {
+      "books_on": "Iberia and select oneworld partners",
+      "best_for": ["Business class US to Madrid (40,500 off-peak)", "Short-haul Europe flights"],
+      "search_at": "iberia.com",
+      "book_at": "iberia.com"
+    },
+    "qatar_privilege_club": {
+      "books_on": "Qatar Airways and oneworld partners",
+      "best_for": ["Qatar Qsuites business class (70K saver)", "oneworld partner awards"],
+      "search_at": "qatarairways.com",
+      "book_at": "qatarairways.com"
+    },
+    "hyatt_world_of_hyatt": {
+      "books_on": "Hyatt properties worldwide",
+      "best_for": ["Category 1-4 at 5-15K/night", "All-inclusive resorts", "No resort fees on awards"],
+      "search_at": "hyatt.com",
+      "book_at": "hyatt.com or Hyatt app"
+    }
+  }
+}
