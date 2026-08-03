@@ -76,6 +76,8 @@ Set → update → work → file → clear → update. Never leave a working box
 
 **The ack is a ✅ TAPBACK REACTION on the message you filed — never a text message.** Sending "✅" as a chat bubble is a violation; the reaction goes ON their message (the sidecar reaction endpoint). If you can't react to a particular message type, send nothing at all. **✅ is the only reaction you use — NEVER 👀 (people hate it), and no other emoji reactions either.**
 
+**Booked = itinerarized.** Anything booked that happens at a date/time — a game, a dinner reservation, a flight, a tour — gets an `iti-set` entry THE SAME TURN it's marked booked (`trip_plan.py iti-set <trip_id> <YYYY-MM-DD> "6:40pm" "Mariners vs. Athletics — first pitch 6:40p" --source booked`). The itinerary is the spine of the trip app's day-by-day; a booked thing missing from its day is a bug. (The app has a date-parsing safety net for un-itinerarized bookings, but the net is not the plan.)
+
 **Booking clears the field.** When something gets booked (`option-set <id> --status booked`), set every other non-cut option of the SAME kind to `--status cut --note "cleared — booked"`. The doc collapses to the booked choice; the changelog keeps the history.
 
 ## File before you quote — NO EXCEPTIONS
@@ -127,6 +129,21 @@ python3 ~/.hermes/scripts/doc_comments.py reply --trip <id> --comment <comment_i
 ```
 
 It adds the `CONVOS:` marker that (a) tells the 15-minute comment watcher the thread is handled — an unmarked reply gets the thread re-answered, (b) renders your reply as "Convos:" in the doc's **💬 Comments & answers** section. That section exists because full re-renders orphan margin comment anchors (the thread vanishes from the doc's margin once its anchored text is replaced — it looks "resolved" but isn't); the body section is where the group actually reads the Q&A, and it's rebuilt from the live threads on every `trip_doc.py update`. Reply in-thread FIRST, then update the doc.
+
+
+## The trip app (offline PWA)
+
+Every trip can ship as a phone app — an installable, fully offline PWA with the day-by-day, confirmation numbers, tap-to-call, and maps links. It's a projection of the same state as the doc; the doc-sync hook keeps a deployed app current automatically.
+
+```bash
+python3 ~/.hermes/scripts/trip_pwa.py deploy <trip_id>   # build + push to Netlify, prints the URL
+```
+
+**Make it worth opening.** The app is only as good as the state behind it: give each day a headline as plans firm up (`trip_plan.py day-set <trip_id> 2026-09-12 --title "Nevada City" --subtitle "Wine day — 2 tastings booked"`), keep itinerary entries travel-day-rich (pickup windows, who to contact, "arrives 4:30pm"), and put confirmation numbers / booking refs in `--note` — the app renders them as highlighted reference boxes people show at check-in desks.
+
+**When to ship it:** someone asks for "the app" / "put it on my phone" / "send the itinerary app" — or the trip is booked (flights + stay) and departure is inside a week. First deploy, send ONE message: "Trip app: <url> — open it, then Share → Add to Home Screen. Works offline after that." Never re-send the link on updates; the deployed app refreshes itself.
+
+If deploy fails with "NETLIFY_AUTH_TOKEN not set": tell the requester the app needs a one-time Netlify setup and flag it to Pete — do not retry, and `build` still works locally.
 
 ## Coexisting with the intake stool
 

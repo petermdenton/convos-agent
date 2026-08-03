@@ -102,6 +102,15 @@ def get_conn():
             updated_at TEXT NOT NULL,
             UNIQUE (trip_id, section)
         );
+        CREATE TABLE IF NOT EXISTS plan_days (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            trip_id INTEGER NOT NULL,
+            day TEXT NOT NULL,
+            title TEXT,
+            subtitle TEXT,
+            updated_at TEXT NOT NULL,
+            UNIQUE (trip_id, day)
+        );
         CREATE TABLE IF NOT EXISTS plan_working (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             trip_id INTEGER NOT NULL,
@@ -303,6 +312,24 @@ def cmd_working_clear(args):
     print(json.dumps({"ok": True, "cleared": cur.rowcount}))
 
 
+def cmd_day_set(args):
+    """Name a trip day for the travel app: title is the location/theme
+    ("Ha Long Bay"), subtitle the one-line arc ("Embark — Stellar of the
+    Seas"). The PWA renders these as the day headline."""
+    conn = get_conn()
+    conn.execute(
+        """INSERT INTO plan_days (trip_id, day, title, subtitle, updated_at)
+           VALUES (?, ?, ?, ?, ?)
+           ON CONFLICT (trip_id, day) DO UPDATE SET
+           title = COALESCE(excluded.title, title),
+           subtitle = COALESCE(excluded.subtitle, subtitle),
+           updated_at = excluded.updated_at""",
+        (args.trip_id, args.day, args.title, args.subtitle, now()))
+    conn.commit()
+    print(json.dumps({"ok": True, "trip_id": args.trip_id, "day": args.day,
+                      "title": args.title, "subtitle": args.subtitle}))
+
+
 def cmd_summary_list(args):
     conn = get_conn()
     rows = conn.execute(
@@ -402,6 +429,13 @@ def main():
     sp.add_argument("section", choices=list(VALID_SECTIONS))
     sp.add_argument("text")
     sp.set_defaults(func=cmd_summary_set)
+
+    sp = sub.add_parser("day-set")
+    sp.add_argument("trip_id", type=int)
+    sp.add_argument("day", help="YYYY-MM-DD")
+    sp.add_argument("--title", default=None)
+    sp.add_argument("--subtitle", default=None)
+    sp.set_defaults(func=cmd_day_set)
 
     sp = sub.add_parser("summary-list")
     sp.add_argument("trip_id", type=int)

@@ -408,8 +408,13 @@ def render_html(conn, trip_id, comments=None):
     h.append("<p><b>✈️ Maintained by Convos</b> — rendered from trip state · humans "
              "comment, Convos edits · updated "
              f"{esc(datetime.now(timezone.utc).strftime('%b %d, %H:%M UTC'))}</p>")
-    h.append(table([row(["Send ideas in the group chat — or comment right here; "
-                         "either way it lands in the plan."])]))
+    h.append(SPACER)
+    box = ("Send ideas in the group chat — or comment right here; "
+           "either way it lands in the plan.")
+    if _col(trip, "pwa_url"):
+        box += (f'<br>Ready for travel? <a href="{esc(trip["pwa_url"])}">'
+                f"Download your personalized trip app here.</a>")
+    h.append(table([row([box])]))
 
     # ── Status at a glance ────────────────────────────────────────────
     h.append(SPACER)

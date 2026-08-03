@@ -8,6 +8,7 @@
 # ── The Convos layer ─────────────────────────────────────────────
 !/.gitignore
 !/README.md
+!/ARCHITECTURE.md
 !/SOUL.md
 !/config.example.yaml
 
@@ -27,6 +28,9 @@ __pycache__/
 scripts/backfill_*.py
 scripts/set_laura.py
 scripts/link_train_trip14.py
+scripts/pwa_deploy14.py
+scripts/pwa_fix_url14.py
+scripts/pwa_smoketest.py
 
 # skills may cache creds/artifacts locally
 skills/**/node_modules/

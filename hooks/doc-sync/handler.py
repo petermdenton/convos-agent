@@ -88,6 +88,18 @@ def _sync(chat_id):
     else:
         _log(f"trip {trip_id}: update FAILED: {(out.stderr or '').strip()[:200]}")
 
+    # Trip app: if this trip has a deployed PWA, rebuild + redeploy it too —
+    # the phone app stays as current as the doc, automatically.
+    try:
+        pwa = subprocess.run(
+            [sys.executable, str(HOME / "scripts" / "trip_pwa.py"),
+             "deploy", str(trip_id), "--if-deployed"],
+            capture_output=True, text=True, timeout=180)
+        if pwa.returncode == 0 and '"url"' in (pwa.stdout or ""):
+            _log(f"trip {trip_id}: PWA redeployed")
+    except Exception as e:  # noqa: BLE001
+        _log(f"trip {trip_id}: PWA redeploy error: {e}")
+
 
 async def handle(event_type, context):
     try:
