@@ -12,8 +12,13 @@
 !/SOUL.md
 !/config.example.yaml
 
+!/eval/
 !/scripts/
 !/hooks/
+# our plugins only (silence-guard)
+!/plugins/
+/plugins/*
+!/plugins/silence-guard/
 # skills: only the travel pack (the rest ship with Hermes)
 !/skills/
 /skills/*

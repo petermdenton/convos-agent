@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "source": "Grounded in recurring group-travel pain points from Reddit threads, travel-planning UX studies, and app-comparison writeups (see RUNBOOK.md sources): flaky commitment, scattered confirmations, organizer burnout, decision paralysis, money awkwardness, roster drama, last-minute changes, on-trip chaos.",
+  "scenarios": [
+    {
+      "id": "S1-cold-open-dm",
+      "pain": "Trip planning starts as a vague idea, not a brief",
+      "script": [["user", "hey"]],
+      "expect": [
+        "EXACTLY one welcome message with a real docs.google.com URL (from the hook)",
+        "no second bubble, no greeting, no 'what are we working on?'",
+        "trip row + doc exist in state within seconds"
+      ]
+    },
+    {
+      "id": "S2-link-dump",
+      "pain": "Info scatters across 15 links nobody re-finds ('who booked what', confirmations lost in email)",
+      "script": [
+        ["user", "https://www.airbnb.com/rooms/12345 this one sleeps 8"],
+        ["user", "https://www.vrbo.com/987654 cheaper but 20min out"],
+        ["user", "also thinking this for dinner night 1: https://www.yelp.com/biz/some-restaurant"]
+      ],
+      "expect": [
+        "zero text replies, zero reactions (invisible mode)",
+        "3 options filed with urls and correct kinds (2 stay, 1 food)",
+        "doc updated (doc-sync) with all 3 visible; stays show as suggested pool"
+      ]
+    },
+    {
+      "id": "S3-flaky-commit",
+      "pain": "Nobody commits; organizer can't tell who's actually in",
+      "script": [
+        ["user", "Convos who's confirmed for the trip so far?"],
+        ["user", "mark me as in"]
+      ],
+      "expect": [
+        "tagged → replies, ledger-style, from roster state (committed flags)",
+        "set-commit recorded; Travelers row headcount changes",
+        "no private info about others' budgets leaked"
+      ]
+    },
+    {
+      "id": "S4-decision-paralysis",
+      "pain": "15 options, no decision — group needs a recommendation, not more links",
+      "script": [
+        ["user", "Convos we have too many hotel options, which one should we book?"]
+      ],
+      "expect": [
+        "ONE recommendation with a one-line why (not a re-listing of all options)",
+        "prices quoted are fresh or age-flagged; no expired token links",
+        "no 'want me to book it?' offer"
+      ]
+    },
+    {
+      "id": "S5-booked-announcement",
+      "pain": "Someone books off-thread; state and doc drift from reality",
+      "script": [
+        ["user", "fyi I booked the airbnb, conf #HMABC123"]
+      ],
+      "expect": [
+        "option flipped to booked, conf number in note",
+        "overlapping alternatives collapse (night-aware for stays)",
+        "iti-set check-in/out entries appear (booked = itinerarized)",
+        "doc + PWA re-render; still zero chat reply (untagged)"
+      ]
+    },
+    {
+      "id": "S6-money-awkwardness",
+      "pain": "Budget talk in group chats is awkward; people go quiet",
+      "script": [
+        ["user", "Convos plan us a trip to San Diego in October"]
+      ],
+      "expect": [
+        "ledger intake runs: where locked, asks dates/how-many",
+        "NEVER asks about budget (three-legged stool)",
+        "doc created at destination+dates without waiting for party size"
+      ]
+    },
+    {
+      "id": "S7-roster-drama",
+      "pain": "Plus-ones and dropouts change the trip shape ('changed the whole vibe')",
+      "script": [
+        ["user", "Jordan is out btw, and Sam is bringing his girlfriend Ana"]
+      ],
+      "expect": [
+        "roster updated silently: Jordan uncommitted/unlinked, Ana linked",
+        "per-night stay coverage and headcounts reflect new party size",
+        "no commentary in chat about who dropped"
+      ]
+    },
+    {
+      "id": "S8-last-minute-change",
+      "pain": "Flight time moves; downstream plans quietly break",
+      "script": [
+        ["user", "ugh our flight got moved to 9:40pm arrival"]
+      ],
+      "expect": [
+        "flight option details updated; arrival itinerary entry moved",
+        "conflicts surfaced IN THE DOC (e.g. check-in time note), not as unsolicited chat",
+        "app redeployed with the new time"
+      ]
+    },
+    {
+      "id": "S9-on-trip-chaos",
+      "pain": "Travel day: 'what's the confirmation number' / 'what time is checkin' while boarding",
+      "script": [
+        ["user", "Convos what's the hotel confirmation and checkin time?"]
+      ],
+      "expect": [
+        "instant answer from state (note + checkin fields) — no live search needed",
+        "mentions the trip app link only if asked where to find things",
+        "answer is 1-2 lines, ledger-style"
+      ]
+    },
+    {
+      "id": "S10-stop-respect",
+      "pain": "Bots that keep talking get removed from the chat",
+      "script": [
+        ["user", "Convos stop"],
+        ["user", "https://www.opentable.com/some-place"],
+        ["user", "Convos you there?"]
+      ],
+      "expect": [
+        "after 'stop': absolute silence — but the opentable link STILL gets filed",
+        "silence-guard log shows zero narrated-silence leaks",
+        "'Convos you there?' (tagged) → brief reply; back to silence"
+      ]
+    }
+  ]
+}

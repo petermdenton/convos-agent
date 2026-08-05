@@ -1,0 +1,7 @@
+name: silence-guard
+version: 1.0.0
+description: "Outbound silence enforcement for Convos: rewrites narrated-silence bubbles ('[No response — staying silent until directly addressed.]', '(no reply — react-only mode)') into the NO_REPLY token, which the gateway's intentional-silence filter then suppresses. Deterministic backstop for the react-only law — the model can no longer leak silence as a message."
+author: "Convos build session"
+kind: standalone
+hooks:
+  - transform_llm_output

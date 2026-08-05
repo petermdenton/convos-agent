@@ -46,7 +46,26 @@ def _alive(url):
         return True
 
 
+def _network_up():
+    """Control probe: if we can't reach a known-good endpoint, the CHECKER
+    is offline — not the links. Never run a sweep in that state (the Aug 2
+    incident: Mac offline at run time → every link flagged dead)."""
+    for probe in ("https://www.google.com/generate_204",
+                  "https://www.apple.com/library/test/success.html"):
+        try:
+            req = urllib.request.Request(probe, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=10):
+                return True
+        except Exception:  # noqa: BLE001
+            continue
+    return False
+
+
 def main():
+    if not _network_up():
+        print("network unreachable from this machine — skipping sweep "
+              "(no links were flagged)")
+        return
     conn = sqlite3.connect(DB, timeout=10)
     conn.row_factory = sqlite3.Row
     cols = {r["name"] for r in conn.execute("PRAGMA table_info(plan_options)")}
@@ -60,9 +79,15 @@ def main():
            FROM plan_options po JOIN trips t ON t.id = po.trip_id
            WHERE t.archived = 0 AND t.doc_id IS NOT NULL
            AND po.status != 'cut' AND po.url LIKE 'http%'""").fetchall()
+    verdicts = [(r, 1 if _alive(r["url"]) else 0) for r in rows]
+    n_dead = sum(1 for _, ok in verdicts if ok == 0)
+    if len(verdicts) >= 5 and n_dead > len(verdicts) / 2:
+        print(f"SUSPICIOUS: {n_dead}/{len(verdicts)} links 'dead' — that's a "
+              "network/blocking problem on this machine, not the links. "
+              "Nothing was flagged.")
+        return
     changed_trips, checked, died, revived = set(), 0, 0, 0
-    for r in rows:
-        ok = 1 if _alive(r["url"]) else 0
+    for r, ok in verdicts:
         checked += 1
         conn.execute("UPDATE plan_options SET link_ok = ?, link_checked_at = ? "
                      "WHERE id = ?", (ok, now, r["id"]))
