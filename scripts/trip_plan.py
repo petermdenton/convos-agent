@@ -14,7 +14,8 @@ Usage:
       [--saved-by Pete] [--status option] [--note "..."]
       # status: option | shortlist | favorite | held | booked | cut
   trip_plan.py option-set <option_id> [--status held] [--price ...] [--note ...] [--details ...]
-  trip_plan.py option-list <trip_id> [--kind flight]
+  trip_plan.py option-list <trip_id> [--kind flight] [--status shortlist] [--full]
+      # output is compact JSON with null/timestamp fields omitted; --full restores them
   trip_plan.py iti-set <trip_id> <YYYY-MM-DD> <slot> "text" [--source Maya]
       # slot: morning | day | afternoon | evening | dinner | all  (re-set to overwrite)
   trip_plan.py iti-clear <itinerary_id>
@@ -144,6 +145,34 @@ def row_to_dict(r):
     return {k: r[k] for k in r.keys()}
 
 
+# Fields that agents never act on — dropped from list output unless --full is
+# passed. Timestamps and link-checker bookkeeping were the bulk of the JSON the
+# agent re-read (and re-paid for) on every request.
+_LIST_NOISE_FIELDS = {"created_at", "updated_at", "link_checked_at"}
+
+
+def rows_for_list(rows, full=False):
+    """Compact row dicts for agent-facing list output.
+
+    Omits null fields and bookkeeping columns, so a 20-option trip renders in
+    a few KB instead of tens of KB of pretty-printed nulls. --full restores
+    the complete rows.
+    """
+    out = []
+    for r in rows:
+        d = row_to_dict(r)
+        if not full:
+            d = {k: v for k, v in d.items()
+                 if v is not None and k not in _LIST_NOISE_FIELDS}
+        out.append(d)
+    return out
+
+
+def dump(obj):
+    """Compact JSON — no indentation, no spaces after separators."""
+    return json.dumps(obj, separators=(",", ":"), ensure_ascii=False)
+
+
 def _log(conn, trip_id, message):
     conn.execute("INSERT INTO plan_log (trip_id, message, created_at) VALUES (?, ?, ?)",
                  (trip_id, message, now()))
@@ -199,8 +228,13 @@ def cmd_option_list(args):
     if args.kind:
         q += " AND kind = ?"
         params.append(args.kind)
+    if args.status:
+        if args.status not in OPTION_STATUSES:
+            fail(f"status must be one of {OPTION_STATUSES}")
+        q += " AND status = ?"
+        params.append(args.status)
     rows = conn.execute(q + " ORDER BY kind, status, id", params).fetchall()
-    print(json.dumps([row_to_dict(r) for r in rows], indent=2, ensure_ascii=False))
+    print(dump(rows_for_list(rows, full=args.full)))
 
 
 def cmd_iti_set(args):
@@ -231,7 +265,7 @@ def cmd_iti_list(args):
     rows = conn.execute(
         "SELECT * FROM plan_itinerary WHERE trip_id = ? ORDER BY day, id",
         (args.trip_id,)).fetchall()
-    print(json.dumps([row_to_dict(r) for r in rows], indent=2, ensure_ascii=False))
+    print(dump(rows_for_list(rows)))
 
 
 def cmd_budget_set(args):
@@ -256,9 +290,9 @@ def cmd_budget_list(args):
         "SELECT * FROM plan_budget WHERE trip_id = ? ORDER BY id", (args.trip_id,)).fetchall()
     total_est = sum(r["estimate_pp"] or 0 for r in rows)
     total_com = sum(r["committed_pp"] or 0 for r in rows)
-    print(json.dumps({"lines": [row_to_dict(r) for r in rows],
-                      "total_estimate_pp": total_est,
-                      "total_committed_pp": total_com}, indent=2, ensure_ascii=False))
+    print(dump({"lines": rows_for_list(rows),
+                "total_estimate_pp": total_est,
+                "total_committed_pp": total_com}))
 
 
 def cmd_log(args):
@@ -335,7 +369,7 @@ def cmd_summary_list(args):
     rows = conn.execute(
         "SELECT * FROM plan_summaries WHERE trip_id = ? ORDER BY section",
         (args.trip_id,)).fetchall()
-    print(json.dumps([row_to_dict(r) for r in rows], indent=2, ensure_ascii=False))
+    print(dump(rows_for_list(rows)))
 
 
 def cmd_log_list(args):
@@ -343,7 +377,7 @@ def cmd_log_list(args):
     rows = conn.execute(
         "SELECT * FROM plan_log WHERE trip_id = ? ORDER BY id DESC LIMIT ?",
         (args.trip_id, args.limit)).fetchall()
-    print(json.dumps([row_to_dict(r) for r in rows], indent=2, ensure_ascii=False))
+    print(dump(rows_for_list(rows)))
 
 
 def main():
@@ -384,6 +418,10 @@ def main():
     sp = sub.add_parser("option-list")
     sp.add_argument("trip_id", type=int)
     sp.add_argument("--kind", default=None)
+    sp.add_argument("--status", default=None,
+                    help="filter to one status (option/shortlist/favorite/held/booked/cut)")
+    sp.add_argument("--full", action="store_true",
+                    help="include null fields and timestamps (default output is compact)")
     sp.set_defaults(func=cmd_option_list)
 
     sp = sub.add_parser("iti-set")

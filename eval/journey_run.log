@@ -1,0 +1,124 @@
+2026-08-05T21:55:51+00:00 === journey start: 45 messages ===
+2026-08-05T21:59:51+00:00 === journey start: 45 messages ===
+2026-08-05T21:59:51+00:00 CHAT LOOKUP FAILED: unable to open database file
+/petermenton/.hermes/scripts/journey_driver.py", line 122, in main
+    chat = find_convos_chat()
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/petermenton/.hermes/scripts/journey_driver.py", line 32, in find_convos_chat
+    conn = sqlite3.connect(f"file:{CHATDB}?mode=ro", uri=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: unable to open database file
+
+2026-08-05T22:02:51+00:00 === journey start: 45 messages ===
+2026-08-05T22:02:55+00:00 CHAT LOOKUP FAILED: no 1:1 chat named like 'Convos' found
+Traceback (most recent call last):
+  File "/Users/petermenton/.hermes/scripts/journey_driver.py", line 135, in main
+    chat = find_convos_chat()
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/petermenton/.hermes/scripts/journey_driver.py", line 55, in find_convos_chat
+    raise RuntimeError("no 1:1 chat named like 'Convos' found")
+RuntimeError: no 1:1 chat named like 'Convos' found
+
+2026-08-05T22:10:52+00:00 === journey start: 45 messages ===
+2026-08-05T22:10:52+00:00 target chat: any;-;+16282895466
+2026-08-05T22:10:57+00:00 [1/45] ok new trip idea. thinking Austin for Kelly's birthday, sometime in No
+2026-08-05T22:11:42+00:00 [2/45] no wait. what about Nashville instead, flights are usually cheaper
+2026-08-05T22:12:32+00:00 [3/45] https://www.travelandleisure.com/best-things-to-do-in-nashville-750818
+2026-08-05T22:13:13+00:00 [4/45] Convos which is cheaper to fly into from Seattle in November, Austin o
+2026-08-05T22:14:28+00:00 [5/45] ok Nashville it is
+2026-08-05T22:15:08+00:00 [6/45] Convos plan it: Nashville, November 12-15, probably 5 of us
+2026-08-05T22:16:18+00:00 [7/45] actually Dre isn't sure yet, count him as maybe
+2026-08-05T22:17:04+00:00 [8/45] Kelly says she can't leave until after her 2pm meeting on the 12th
+2026-08-05T22:17:44+00:00 [9/45] Convos any nonstops that leave SEA after 5pm on the 12th?
+2026-08-05T22:19:04+00:00 [10/45] hold that thought, Jamie's in. so 5 confirmed if Dre commits
+2026-08-05T22:19:49+00:00 [11/45] https://www.airbnb.com/rooms/52301457 6 beds, east nashville
+2026-08-05T22:20:24+00:00 [12/45] https://www.vrbo.com/2234561 this one has a rooftop
+2026-08-05T22:21:00+00:00 [13/45] https://www.opentable.com/r/husk-nashville for a nice dinner night?
+2026-08-05T22:21:30+00:00 [14/45] someone said Hattie B's is mandatory https://hattieb.com/
+2026-08-05T22:22:05+00:00 [15/45] https://www.broadwaynashville.com honky tonk crawl obviously
+2026-08-05T22:22:35+00:00 [16/45] https://ryman.com/events check who's playing while we're there
+2026-08-05T22:23:15+00:00 [17/45] my sister said the Gulch is overrated btw
+2026-08-05T22:23:51+00:00 [18/45] https://www.airbnb.com/rooms/9982134 backup airbnb, cheaper, 12 south
+2026-08-05T22:24:36+00:00 [19/45] Convos what's playing at the Ryman Nov 12-15?
+2026-08-05T22:26:08+00:00 [20/45] Convos ok which airbnb should we grab? rooftop matters less than locat
+2026-08-05T22:27:08+00:00 [21/45] fyi some of us are on a tighter budget this time
+2026-08-05T22:27:48+00:00 [22/45] let's keep dinners casual except one nice night
+=== FULL RESET — starting over ===
+2026-08-05T22:30:13+00:00 === journey start: 45 messages ===
+2026-08-05T22:30:13+00:00 target chat: any;-;+16282895466
+2026-08-05T22:30:21+00:00 [1/45] ok new trip idea. thinking Austin for Kelly's birthday, sometime in No
+2026-08-05T22:31:06+00:00 [2/45] no wait. what about Nashville instead, flights are usually cheaper
+2026-08-05T22:31:56+00:00 [3/45] https://www.travelandleisure.com/best-things-to-do-in-nashville-750818
+2026-08-05T22:32:37+00:00 [4/45] Convos which is cheaper to fly into from Seattle in November, Austin o
+2026-08-05T22:33:52+00:00 [5/45] ok Nashville it is
+2026-08-05T22:34:32+00:00 [6/45] Convos plan it: Nashville, November 12-15, probably 5 of us
+2026-08-05T22:35:43+00:00 [7/45] actually Dre isn't sure yet, count him as maybe
+2026-08-05T22:36:28+00:00 [8/45] Kelly says she can't leave until after her 2pm meeting on the 12th
+2026-08-05T22:37:08+00:00 [9/45] Convos any nonstops that leave SEA after 5pm on the 12th?
+2026-08-05T22:38:28+00:00 [10/45] hold that thought, Jamie's in. so 5 confirmed if Dre commits
+2026-08-05T22:39:14+00:00 [11/45] https://www.airbnb.com/rooms/52301457 6 beds, east nashville
+2026-08-05T22:39:49+00:00 [12/45] https://www.vrbo.com/2234561 this one has a rooftop
+2026-08-05T22:40:24+00:00 [13/45] https://www.opentable.com/r/husk-nashville for a nice dinner night?
+2026-08-05T22:40:55+00:00 [14/45] someone said Hattie B's is mandatory https://hattieb.com/
+2026-08-05T22:41:30+00:00 [15/45] https://www.broadwaynashville.com honky tonk crawl obviously
+2026-08-05T22:42:00+00:00 [16/45] https://ryman.com/events check who's playing while we're there
+2026-08-05T22:42:41+00:00 [17/45] my sister said the Gulch is overrated btw
+2026-08-05T22:43:16+00:00 [18/45] https://www.airbnb.com/rooms/9982134 backup airbnb, cheaper, 12 south
+2026-08-05T22:44:01+00:00 [19/45] Convos what's playing at the Ryman Nov 12-15?
+2026-08-05T22:45:32+00:00 [20/45] Convos ok which airbnb should we grab? rooftop matters less than locat
+2026-08-05T22:46:32+00:00 [21/45] fyi some of us are on a tighter budget this time
+2026-08-05T22:47:12+00:00 [22/45] let's keep dinners casual except one nice night
+2026-08-05T22:47:57+00:00 [23/45] we booked the east nashville airbnb!! conf #HMKTX8829
+2026-08-05T22:48:38+00:00 [24/45] flights booked too, Alaska 668 out on the 12th at 5:45pm, back Sunday 
+=== FULL RESET — starting over ===
+2026-08-05T22:52:53+00:00 script: Tokyo cherry blossom — 4 people, March 20-28, international pains
+2026-08-05T22:52:53+00:00 === journey start: 47 messages ===
+2026-08-05T22:52:53+00:00 target chat: any;-;+16282895466
+2026-08-05T22:52:58+00:00 [1/47] ok big one. Japan in the spring???
+2026-08-05T22:53:39+00:00 [2/47] cherry blossom season Tokyo, been on my list forever
+2026-08-05T22:54:24+00:00 [3/47] Convos when is cherry blossom season in Tokyo usually?
+2026-08-05T22:55:39+00:00 [4/47] ok late March it is
+2026-08-05T22:56:19+00:00 [5/47] Convos plan it: Tokyo, March 20-28, 4 of us
+2026-08-05T22:57:30+00:00 [6/47] me, Kelly, Kai and Jared
+2026-08-05T22:58:15+00:00 [7/47] heads up Kai has a Philippines passport with a US green card, not sure
+2026-08-05T22:58:55+00:00 [8/47] Convos do US passport holders need a visa for Japan? and what about Ka
+2026-08-05T23:00:15+00:00 [9/47] Convos are there any entry forms we should do in advance?
+2026-08-05T23:01:05+00:00 [10/47] Convos find nonstop options SEA to Tokyo for those dates, 4 people
+2026-08-05T23:02:36+00:00 [11/47] is Haneda or Narita better for the city?
+2026-08-05T23:03:16+00:00 [12/47] Convos Haneda or Narita, which should we fly into?
+2026-08-05T23:04:01+00:00 [13/47] https://www.airbnb.com/s/Tokyo--Japan/homes thinking shibuya or shinju
+2026-08-05T23:04:36+00:00 [14/47] https://www.parkhyatttokyo.com bucket list but $$$$, lost in translati
+2026-08-05T23:05:06+00:00 [15/47] https://www.hoshinoya.com/tokyo/en/ or one ryokan night??
+2026-08-05T23:05:41+00:00 [16/47] https://teamlabplanets.dmm.com/en this looks insane
+2026-08-05T23:06:12+00:00 [17/47] https://www.ghibli-museum.jp Kelly will die if we don't do this
+2026-08-05T23:06:47+00:00 [18/47] https://www.shibuya-scramble-square.com/sky/ sunset up here?
+2026-08-05T23:07:17+00:00 [19/47] https://www.senso-ji.jp temple morning in asakusa
+2026-08-05T23:07:52+00:00 [20/47] https://afuri.com yuzu ramen, non negotiable
+2026-08-05T23:08:22+00:00 [21/47] https://www.airbnb.com/rooms/99999999999 wait this one looks perfect
+2026-08-05T23:09:02+00:00 [22/47] my coworker lived there, says the robot restaurant is closed anyway lo
+2026-08-05T23:09:48+00:00 [23/47] Convos do we need JR passes if we're mostly in Tokyo? maybe one day tr
+2026-08-05T23:10:58+00:00 [24/47] heads up Jared is saving for a house so let's keep things reasonable
+2026-08-05T23:11:38+00:00 [25/47] Convos is Japan still cash-heavy? should we bring yen?
+2026-08-05T23:12:38+00:00 [26/47] Convos ghibli tickets are supposedly impossible — when and how do we b
+2026-08-05T23:13:58+00:00 [27/47] Convos your pick: airbnb in shibuya or splurge on the park hyatt?
+2026-08-05T23:14:49+00:00 [28/47] ok flights BOOKED, Delta 167 nonstop SEA-HND March 20, back March 28, 
+2026-08-05T23:15:34+00:00 [29/47] airbnb booked in shibuya! conf #HMTYO4412, checkin March 20 3pm, check
+2026-08-05T23:16:14+00:00 [30/47] we got teamlab planets tickets for March 22 at 10am!!
+2026-08-05T23:16:59+00:00 [31/47] Convos add one hoshinoya ryokan night as a maybe for March 25
+2026-08-05T23:17:59+00:00 [32/47] Convos who's confirmed and what's still open?
+2026-08-05T23:19:10+00:00 [33/47] Kai's coming from LA separately, lands HND 5:40pm on the 20th, JAL 15,
+2026-08-05T23:19:55+00:00 [34/47] ghibli tickets go on sale the 10th at 10am japan time, someone set an 
+2026-08-05T23:20:35+00:00 [35/47] Convos watch ghibli ticket release and remind us on March 9th
+2026-08-05T23:21:25+00:00 [36/47] Convos build out the day-by-day
+2026-08-05T23:23:25+00:00 [37/47] Convos send us the trip app
+2026-08-05T23:24:56+00:00 [38/47] what do we do about phones over there, esim?
+2026-08-05T23:25:36+00:00 [39/47] Convos what's the best esim option for Japan?
+2026-08-05T23:26:21+00:00 [40/47] Convos stop
+2026-08-05T23:26:51+00:00 [41/47] https://tabelog.com/en/tokyo/ bookmarking the food bible
+2026-08-05T23:27:26+00:00 [42/47] we are going to eat SO well
+2026-08-05T23:28:06+00:00 [43/47] Convos you there? what's our first morning plan?
+2026-08-05T23:29:07+00:00 [44/47] Convos what's the airbnb confirmation and checkin time again?
+2026-08-05T23:29:57+00:00 [45/47] Convos what time does Kai land and where do we meet him?
+2026-08-05T23:30:42+00:00 [46/47] sakura sakura sakura 🌸
+2026-08-05T23:31:12+00:00 [47/47] Convos arigatou for organizing all this
+2026-08-05T23:31:12+00:00 === journey complete: 47/47 sent ===

@@ -1,0 +1,9 @@
+name: tag-gate
+description: >
+  Records, per session turn, whether the inbound chat message addressed
+  Convos ("Convos" mention). The silence-guard plugin reads this record and
+  suppresses ALL model output for untagged turns (outside a short
+  answer-window after Convos asks a question). This is the code tier of the
+  react-only law: untagged messages are filed silently, never acknowledged.
+events:
+  - agent:start

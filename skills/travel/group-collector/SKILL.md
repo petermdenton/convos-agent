@@ -23,7 +23,7 @@ python3 ~/.hermes/scripts/trip_tasks.py list-trips --chat "<chat_id>"
 - **Empty** → FIRST CONTACT. Run the sequence below.
 - **Trip returned** → collector duty: classify the message, file it into that trip, update the doc.
 
-Never guess whether a chat has a trip. The lookup is the truth.
+Never guess whether a chat has a trip. The lookup is the truth. **And its trip_id is the ONLY trip you may file into this turn** — filing this chat's drop into another chat's trip is data contamination, the worst state error there is. Re-run the lookup rather than reuse a trip_id from memory.
 
 ## First contact (chat has no trip)
 
@@ -44,7 +44,7 @@ Order is law: 1 and 2 BEFORE 3. If doc creation fails, fix it silently first —
 | Restaurant/bar | `--kind food` |
 | Activity/tour/event | `--kind activity` — label it by what the GROUP calls it ("Mariners @ A's"), not the venue's formal name |
 | Route/directions advice you give (transit, parking, shuttle, "how do we get to X") | `--kind transport` — label the trip leg, step-by-step in `--details`, Maps directions link in `--url`. Directions quoted in chat are an option like any other: FILE them. **If the route serves a specific activity/stay, add `--related-to <that option's id>`** — it then renders inline under that item ("🚆 Train to Game") instead of cluttering Transportation. Keep the label short and rider-shaped: "Train to Game", not "Game day light rail routing via 13th St". |
-| Any URL | Fetch, extract, file under best-guess kind — a filed mystery beats a lost link |
+| Any URL | Fetch, extract, file under best-guess kind — a filed mystery beats a lost link. **Dead/404 link: file a stub anyway** (label from context, `--note "link 404 — need working link"`); the doc shows the gap. NEVER ask for a resend in chat unless tagged. |
 | Screenshot/image | Read it (flight itinerary, listing, menu) and file what it shows; if unreadable (HEIC/oversized), file a stub from the chat context |
 | Destination/dates surfacing | `set-trip <id> --destination ... --start ...` then graft sections (`add-section`) |
 | Budget/preferences | `budget-set` / `travelers.py upsert --note` |
